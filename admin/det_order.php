@@ -127,7 +127,7 @@ else{
                                 <button type="button" class="btn bg-blue btn-circle-lg waves-effect waves-circle waves-float waves-light" title="Tambah Data" onclick="tambahDetOrder('<?php echo $id ?>')">
                                     <i class="material-icons">playlist_add</i>
                                 </button>
-                                <a href="_cetak_det_pembelian.php?id=<?php echo $id; ?>" target="_blank"><button type="button" class="btn bg-black btn-circle-lg waves-effect waves-circle waves-float waves-light" title="Cetak Data">
+                                <a href="_cetak_det_order.php?id=<?php echo $id; ?>" target="_blank"><button type="button" class="btn bg-black btn-circle-lg waves-effect waves-circle waves-float waves-light" title="Cetak Data">
                                     <i class="material-icons">local_printshop</i>
                                 </button></a>
                             </div>

@@ -112,7 +112,7 @@ while ($cek) {
                             <button type="button" class="btn bg-blue btn-circle-lg waves-effect waves-circle waves-float waves-light" title="Tambah Data" onclick="tambahOrder('<?php echo $kode ?>');">
                                 <i class="material-icons">playlist_add</i>
                             </button>
-                            <a href="_cetak_pembelian.php" target="_blank"><button type="button" class="btn bg-black btn-circle-lg waves-effect waves-circle waves-float waves-light" title="Cetak Data">
+                            <a href="_cetak_order.php" target="_blank"><button type="button" class="btn bg-black btn-circle-lg waves-effect waves-circle waves-float waves-light" title="Cetak Data">
                                 <i class="material-icons">local_printshop</i>
                             </button></a>
                             <br><br>
@@ -144,9 +144,9 @@ while ($cek) {
                                         <tr>
                                             <th><center>No</center></th>
                                             <th><center>Kode Order</center></th>
-                                            <th><center>Tanggal Jual</center></th>
+                                            <th><center>Tanggal Order</center></th>
                                             <th><center>Nama Pembeli</center></th>
-                                            <th><center>Total Jual</center></th>
+                                            <th><center>Total Order</center></th>
                                             <th><center>Status</center></th>
                                             <th><center>Aksi</center></th>
                                         </tr>

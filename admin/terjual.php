@@ -47,7 +47,7 @@
                     <div class="card">
                         <div class="header">
                             <span style="font-size: 25px"><center>DATA BARANG TERJUAL</center></span>
-                            <a href="_cetak_stok.php" target="_blank"><button type="button" class="btn bg-black btn-circle-lg waves-effect waves-circle waves-float waves-light" title="Cetak Data">
+                            <a href="_cetak_terjual.php" target="_blank"><button type="button" class="btn bg-black btn-circle-lg waves-effect waves-circle waves-float waves-light" title="Cetak Data">
                                 <i class="material-icons">local_printshop</i>
                             </button></a>
                         </div>

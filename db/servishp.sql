@@ -32,13 +32,16 @@ CREATE TABLE `barang` (
   PRIMARY KEY (`id_barang`),
   KEY `barang_ibfk_1` (`id_pembelian`),
   CONSTRAINT `barang_ibfk_1` FOREIGN KEY (`id_pembelian`) REFERENCES `pembelian` (`id_pembelian`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
 
 /*Data for the table `barang` */
 
 insert  into `barang`(`id_barang`,`id_pembelian`,`nama_barang`,`harga_beli`,`harga_jual`,`stok`,`satuan`,`foto`) values 
 (10,1,'Soft Case OPPO A7s Hitam',25000,30000,8,'pcs','http://localhost/servishp/images/Soft Case OPPO A7s Hitam-211219.png'),
-(11,1,'Soft Case OPPO A7s Pink',25000,30000,10,'pcs','http://localhost/servishp/images/Soft Case OPPO A7s Pink-211219.png');
+(11,1,'Soft Case OPPO A7s Pink',25000,30000,10,'pcs','http://localhost/servishp/images/Soft Case OPPO A7s Pink-211219.png'),
+(26,13,'Jasa servis 1',0,5000,1000000,'pcs','http://localhost/servishp/images/default.jpg'),
+(27,13,'Jasa servis 2',0,10000,1000000,'pcs','http://localhost/servishp/images/default.jpg'),
+(28,1,'Port Micro B Charger ',20000,25000,20,'pcs','http://localhost/servishp/images/default.jpg');
 
 /*Table structure for table `detail_penjualan` */
 
@@ -62,21 +65,28 @@ CREATE TABLE `detail_penjualan` (
 insert  into `detail_penjualan`(`id_detpenjualan`,`id_jual`,`id_barang`,`jml_jual`,`subtotal_jual`) values 
 (10,'NNHK950X',10,2,60000);
 
-/*Table structure for table `detail_perbaikan` */
+/*Table structure for table `detail_servis` */
 
-DROP TABLE IF EXISTS `detail_perbaikan`;
+DROP TABLE IF EXISTS `detail_servis`;
 
-CREATE TABLE `detail_perbaikan` (
-  `id_detperbaikan` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `detail_servis` (
+  `id_detservis` int(11) NOT NULL AUTO_INCREMENT,
+  `servis_id` varchar(10) DEFAULT NULL,
   `id_barang` int(11) DEFAULT NULL,
   `jml` int(11) DEFAULT NULL,
   `subtotal` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_detperbaikan`),
+  PRIMARY KEY (`id_detservis`),
   KEY `id_barang` (`id_barang`),
-  CONSTRAINT `detail_perbaikan_ibfk_1` FOREIGN KEY (`id_barang`) REFERENCES `barang` (`id_barang`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  KEY `servis_id` (`servis_id`),
+  CONSTRAINT `detail_servis_ibfk_1` FOREIGN KEY (`id_barang`) REFERENCES `barang` (`id_barang`),
+  CONSTRAINT `detail_servis_ibfk_2` FOREIGN KEY (`servis_id`) REFERENCES `servis` (`id_servis`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
-/*Data for the table `detail_perbaikan` */
+/*Data for the table `detail_servis` */
+
+insert  into `detail_servis`(`id_detservis`,`servis_id`,`id_barang`,`jml`,`subtotal`) values 
+(2,'DASDJLA',28,1,25000),
+(3,'DASDJLA',26,1,5000);
 
 /*Table structure for table `pembelian` */
 
@@ -91,12 +101,13 @@ CREATE TABLE `pembelian` (
   PRIMARY KEY (`id_pembelian`),
   KEY `id_supplier` (`id_supplier`),
   CONSTRAINT `pembelian_ibfk_1` FOREIGN KEY (`id_supplier`) REFERENCES `supplier` (`id_supplier`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 /*Data for the table `pembelian` */
 
 insert  into `pembelian`(`id_pembelian`,`tgl_beli`,`id_supplier`,`total_beli`,`status_beli`) values 
-(1,'2019-12-02',1,50000,'lunas');
+(1,'2019-12-02',1,50000,'lunas'),
+(13,'2019-12-01',4,0,'lunas');
 
 /*Table structure for table `penjualan` */
 
@@ -118,50 +129,34 @@ CREATE TABLE `penjualan` (
 insert  into `penjualan`(`id_penjualan`,`id_user`,`tgl_jual`,`total_penjualan`,`status_penjualan`) values 
 ('NNHK950X',2,'2019-12-23T13:11',60000,'aktif');
 
-/*Table structure for table `perbaikan` */
-
-DROP TABLE IF EXISTS `perbaikan`;
-
-CREATE TABLE `perbaikan` (
-  `id_perbaikan` int(11) NOT NULL AUTO_INCREMENT,
-  `id_detperbaikan` int(11) DEFAULT NULL,
-  `id_servis` int(11) DEFAULT NULL,
-  `id_user` int(11) DEFAULT NULL,
-  `tgl_transaksi` datetime DEFAULT NULL,
-  `tgl_selesai` datetime DEFAULT NULL,
-  `nama` varchar(80) DEFAULT NULL,
-  `no_tlp` varchar(13) DEFAULT NULL,
-  `ket_hp` varchar(50) DEFAULT NULL,
-  `biaya_perbaikan` int(11) DEFAULT NULL,
-  `biaya_sparepart` int(11) DEFAULT NULL,
-  `total` int(11) DEFAULT NULL,
-  `status_perbaikan` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`id_perbaikan`),
-  KEY `id_servis` (`id_servis`),
-  KEY `id_detperbaikan` (`id_detperbaikan`),
-  KEY `id_user` (`id_user`),
-  CONSTRAINT `perbaikan_ibfk_1` FOREIGN KEY (`id_servis`) REFERENCES `servis` (`id_servis`),
-  CONSTRAINT `perbaikan_ibfk_2` FOREIGN KEY (`id_detperbaikan`) REFERENCES `detail_perbaikan` (`id_detperbaikan`),
-  CONSTRAINT `perbaikan_ibfk_3` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-/*Data for the table `perbaikan` */
-
 /*Table structure for table `servis` */
 
 DROP TABLE IF EXISTS `servis`;
 
 CREATE TABLE `servis` (
-  `id_servis` int(11) NOT NULL AUTO_INCREMENT,
+  `id_servis` varchar(10) NOT NULL,
+  `id_user` int(11) DEFAULT NULL,
   `id_teknisi` int(11) DEFAULT NULL,
-  `nama_servis` varchar(80) DEFAULT NULL,
-  `harga` int(11) DEFAULT NULL,
+  `tgl_masuk` date DEFAULT NULL,
+  `tgl_selesai` date DEFAULT NULL,
+  `gejala` text CHARACTER SET utf8mb4 DEFAULT NULL,
+  `kelengkapan` text CHARACTER SET utf8mb4 DEFAULT NULL,
+  `total_biaya` int(11) DEFAULT NULL,
+  `diagnosa` text CHARACTER SET utf8mb4 DEFAULT NULL,
+  `status_servis` varchar(20) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `status_bayar` varchar(20) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `penilaian_pembeli` text DEFAULT NULL,
   PRIMARY KEY (`id_servis`),
+  KEY `id_user` (`id_user`),
   KEY `id_teknisi` (`id_teknisi`),
-  CONSTRAINT `servis_ibfk_1` FOREIGN KEY (`id_teknisi`) REFERENCES `teknisi` (`id_teknisi`)
+  CONSTRAINT `servis_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `servis_ibfk_2` FOREIGN KEY (`id_teknisi`) REFERENCES `teknisi` (`id_teknisi`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `servis` */
+
+insert  into `servis`(`id_servis`,`id_user`,`id_teknisi`,`tgl_masuk`,`tgl_selesai`,`gejala`,`kelengkapan`,`total_biaya`,`diagnosa`,`status_servis`,`status_bayar`,`penilaian_pembeli`) values 
+('DASDJLA',2,2,'2019-12-16','2019-12-23','Tidak Dapat di cas','hp batangan',30000,'lubang charger rusak\r\nperkiraan biaya sekitar 35 rb','aktif','belum lunas','5-Pelayanan nya memuaskan');
 
 /*Table structure for table `supplier` */
 
@@ -173,13 +168,14 @@ CREATE TABLE `supplier` (
   `no_tlp` int(11) DEFAULT NULL,
   `alamat` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_supplier`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 /*Data for the table `supplier` */
 
 insert  into `supplier`(`id_supplier`,`nama_supplier`,`no_tlp`,`alamat`) values 
 (1,'CV Dunia Komputer Baru',111111,'Jl. Wonosari Km 5, Gunung Kidul Yogyakarta'),
-(2,'PT Rekayasa Komputer',923321212,'Jl. Prof Dr Soepomo');
+(2,'PT Rekayasa Komputer',923321212,'Jl. Prof Dr Soepomo'),
+(4,'Teknisi Tamvan',0,'Wonosari');
 
 /*Table structure for table `teknisi` */
 

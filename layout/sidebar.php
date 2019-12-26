@@ -7,14 +7,14 @@
                 <img src="../images/user.png" width="48" height="48" alt="User" />
             </div>
             <div class="info-container">
-                <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">John Doe</div>
-                <div class="email">john.doe@example.com</div>
+                <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['nama']; ?></div>
+                <div class="email"><?php echo $_SESSION['email']; ?></div>
                 <div class="btn-group user-helper-dropdown">
                     <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                     <ul class="dropdown-menu pull-right">
-                        <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>
+                        <li><a href="profil.php"><i class="material-icons">person</i>Profile</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="javascript:void(0);"><i class="material-icons">input</i>Sign Out</a></li>
+                        <li><a href="../logout.php"><i class="material-icons">input</i>Sign Out</a></li>
                     </ul>
                 </div>
             </div>
@@ -38,13 +38,13 @@
                     <ul class="ml-menu">
                         <li>
                             <li>
-                                <a href="supplier.php">Supplier - OK</a>
+                                <a href="supplier.php">Supplier</a>
                             </li>
                             <li>
-                                <a href="pengguna.php">Pengguna - OK</a>
+                                <a href="pengguna.php">Pengguna</a>
                             </li>
                             <li>
-                                <a href="teknisi.php">Teknisi - OK</a>
+                                <a href="teknisi.php">Teknisi</a>
                             </li>
                         </li>
                     </ul>
@@ -57,10 +57,10 @@
                     <ul class="ml-menu">
                         <li>
                             <li>
-                                <a href="pembelian.php">Data Pembelian - OK</a>
+                                <a href="pembelian.php">Data Pembelian</a>
                             </li>
                             <li>
-                                <a href="stok_barang.php">Data Stok Barang - OK</a>
+                                <a href="stok_barang.php">Data Stok Barang</a>
                             </li>
                         </li>
                     </ul>
@@ -73,35 +73,25 @@
                     <ul class="ml-menu">
                         <li>
                             <li>
-                                <a href="order.php">Data Order - OK</a>
+                                <a href="order.php">Data Order</a>
                             </li>
                             <li>
-                                <a href="terjual.php">Data Barang Terjual - OK</a>
+                                <a href="terjual.php">Data Barang Terjual</a>
                             </li>
                             <li>
-                                <a href="keuntungan.php">Keuntungan - OK</a>
+                                <a href="keuntungan.php">Keuntungan</a>
                             </li>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="javascript:void(0);" class="menu-toggle">
+                    <a href="servis.php">
                         <i class="material-icons">build</i>
                         <span>Data Servis</span>
                     </a>
-                    <ul class="ml-menu">
-                        <li>
-                            <li>
-                                <a href="#">Data Servis</a>
-                            </li>
-                            <li>
-                                <a href="#">Riwayat Servis</a>
-                            </li>
-                        </li>
-                    </ul>
                 </li>
                 <li class="">
-                    <a href="/admin">
+                    <a href="penilaian.php">
                         <i class="material-icons">stars</i>
                         <span>Penilaian Pembeli</span>
                     </a>

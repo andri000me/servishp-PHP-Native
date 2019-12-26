@@ -43,7 +43,14 @@
                         </div>
                         <div class="content">
                             <div class="text">SERVIS</div>
-                            <div class="number count-to" data-from="0" data-to="125" data-speed="15" data-fresh-interval="20"></div>
+                            <?php 
+                                include_once '../config/dao.php';
+                                $dao = new Dao();
+                                $result = $dao->viewDashboard('servis');
+                                $result = $result->fetch_array();
+                                $jml = $result['jml'];
+                            ?>
+                            <div class="number count-to" data-from="0" data-to="<?php echo $jml; ?>" data-speed="15" data-fresh-interval="20"></div>
                         </div>
                     </div>
                 </div>
@@ -53,8 +60,13 @@
                             <i class="material-icons">shopping_basket</i>
                         </div>
                         <div class="content">
+                            <?php 
+                                $result = $dao->viewDashboard('pembelian');
+                                $result = $result->fetch_array();
+                                $jml = $result['jml'];
+                            ?>
                             <div class="text">PEMBELIAN</div>
-                            <div class="number count-to" data-from="0" data-to="257" data-speed="1000" data-fresh-interval="20"></div>
+                            <div class="number count-to" data-from="0" data-to="<?php echo $jml; ?>" data-speed="1000" data-fresh-interval="20"></div>
                         </div>
                     </div>
                 </div>
@@ -64,8 +76,13 @@
                             <i class="material-icons">euro_symbol</i>
                         </div>
                         <div class="content">
+                            <?php 
+                                $result = $dao->viewDashboard('penjualan');
+                                $result = $result->fetch_array();
+                                $jml = $result['jml'];
+                            ?>
                             <div class="text">PENJUALAN</div>
-                            <div class="number count-to" data-from="0" data-to="243" data-speed="1000" data-fresh-interval="20"></div>
+                            <div class="number count-to" data-from="0" data-to="<?php echo $jml; ?>" data-speed="1000" data-fresh-interval="20"></div>
                         </div>
                     </div>
                 </div>
@@ -75,8 +92,13 @@
                             <i class="material-icons">person_add</i>
                         </div>
                         <div class="content">
+                            <?php 
+                            $result = $dao->viewDashboard('users');
+                            $result = $result->fetch_array();
+                            $jml = $result['jml'];
+                            ?>
                             <div class="text">PENGGUNA</div>
-                            <div class="number count-to" data-from="0" data-to="1225" data-speed="1000" data-fresh-interval="20"></div>
+                            <div class="number count-to" data-from="0" data-to="<?php echo $jml ?>" data-speed="1000" data-fresh-interval="20"></div>
                         </div>
                     </div>
                 </div>

@@ -1,3 +1,14 @@
+<?php 
+error_reporting('off');
+session_start();
+if ($_SESSION['level'] != "admin" || empty($_SESSION['level'])) {
+?>
+    <script type="text/javascript">
+        document.location = '../';
+    </script>
+<?php    
+}
+?>
 <!DOCTYPE html>
 <html>
 

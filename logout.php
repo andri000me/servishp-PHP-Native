@@ -1,0 +1,14 @@
+<?php 
+session_start();
+$_SESSION['nama']=null;
+$_SESSION['level']=null;
+$_SESSION['id_user']=null;
+$_SESSION['email']=null;
+unset($_SESSION['nama']);
+unset($_SESSION['level']);
+unset($_SESSION['id_user']);
+unset($_SESSION['email']);
+session_unset();
+session_destroy();
+header("location:../servishp");
+?>

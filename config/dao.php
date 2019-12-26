@@ -8,6 +8,12 @@ class Dao
 	{
 			$this->link = new Dbconfig(); //object
 		}
+
+		public function cekLogin($username,$password) {
+			$query = "SELECT * FROM users WHERE username ='$username' and password = PASSWORD('$password')";
+			return mysqli_query($this->link->conn, $query);
+		}
+
 		public function view($tabel)
 		{	
 			$query = "SELECT * FROM $tabel";
@@ -40,13 +46,19 @@ class Dao
 
 		public function viewTerjual()
 		{	
-			$query = "SELECT `barang`.nama_barang, `penjualan`.tgl_jual, `detail_penjualan`.* FROM barang, detail_penjualan, penjualan WHERE `barang`.id_barang = `detail_penjualan`.id_barang AND `penjualan`.id_penjualan = `detail_penjualan`.id_jual ORDER BY tgl_jual ASC";
+			$query = "SELECT `barang`.nama_barang, `penjualan`.tgl_jual, `detail_penjualan`.* FROM barang, detail_penjualan, penjualan WHERE `barang`.id_barang = `detail_penjualan`.id_barang AND `penjualan`.id_penjualan = `detail_penjualan`.id_jual ORDER BY tgl_jual DESC";
 			return mysqli_query($this->link->conn, $query);	
 		}
 
 		public function viewKeuntungan()
 		{	
 			$query = "SELECT nama_barang, nama_supplier, jml_jual, (harga_jual - harga_beli) * jml_jual AS keuntungan FROM barang, detail_penjualan, supplier, pembelian WHERE `barang`.id_barang = `detail_penjualan`.id_barang AND `barang`.id_pembelian = `pembelian`.id_pembelian AND `pembelian`.id_supplier = `supplier`.id_supplier ORDER BY nama_barang ASC";
+			return mysqli_query($this->link->conn, $query);	
+		}
+
+		public function viewServis()
+		{	
+			$query = "SELECT servis.*, `teknisi`.nama as nama_teknisi, `users`.nama as nama_user FROM `users`, teknisi, servis WHERE `users`.id_user = `servis`.id_user AND `teknisi`.id_teknisi = `servis`.id_teknisi ORDER BY tgl_masuk DESC";
 			return mysqli_query($this->link->conn, $query);	
 		}
 
@@ -62,9 +74,22 @@ class Dao
 			return mysqli_query($this->link->conn, $query);	
 		}
 
-		public function cekLogin($username,$password) {
-			$query = "SELECT * FROM users WHERE (username ='$username') and password = PASSWORD('$password')";
-			return mysqli_query($this->link->conn, $query);
+		public function viewDetServis($id_servis)
+		{	
+			$query = "SELECT `detail_servis`.*, `barang`.nama_barang, `barang`.harga_jual FROM barang, detail_servis WHERE `barang`.id_barang = `detail_servis`.id_barang AND servis_id = '$id_servis'";
+			return mysqli_query($this->link->conn, $query);	
+		}
+
+		public function viewPenilaian($tabel,$tgl)
+		{	
+			$query = "SELECT $tgl as tgl, `users`.nama, penilaian_pelanggan FROM `users`, $tabel WHERE `$tabel`.id_user = `users`.id_user ORDER BY $tgl DESC";
+			return mysqli_query($this->link->conn, $query);	
+		}
+
+		public function viewDashboard($tabel)
+		{
+			$query = "SELECT COUNT(*) AS jml FROM `$tabel`";
+			return mysqli_query($this->link->conn, $query);	
 		}
 
 		public function execute($query)

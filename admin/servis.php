@@ -12,7 +12,7 @@ while ($cek) {
     for ($i = 0; $i < 8; $i++) {
         $kode .= $characters[rand(0, $charactersLength - 1)];
     }
-    $result = $dao->execute("SELECT * FROM `penjualan` WHERE id_penjualan = '$kode'");
+    $result = $dao->execute("SELECT * FROM `servis` WHERE id_servis = '$kode'");
     if ($result->num_rows == 0) {
         $cek = false;
     }
@@ -20,37 +20,50 @@ while ($cek) {
 
 ?>
 <script type="text/javascript">
-    function tambahOrder(id){
-        $('#id_order').val(id);
-        $('#aksi_order').val('tambah');
-        $('#tgl_order').val('');
-        $('#nama_pembeli').val('0');
-        document.getElementById('id_order').readOnly = true;
-        document.getElementById('total_order').readOnly = true;
-        $('#total_order').val('0');
-        $('#status_order').val('aktif');
-        $('#tombol_order').text('Simpan');
-        $('#modalOrder').modal('show');   
+    function tambahServis(id){
+        $('#id_servis').val(id);
+        $('#aksi_servis').val('tambah');
+        $('#tgl_masuk').val('');
+        $('#nama_pelanggan').val('0');
+        $('#nama_teknisi').val('0');
+        $('#gejala').val('');
+        $('#diagnosa').val('');
+        $('#kelengkapan').val('');
+        $('#tgl_selesai').val('');
+        $('#total_biaya').val('0');
+        $('#status_servis').val('aktif');
+        $('#status_pembayaran').val('Belum Lunas');
+        document.getElementById('id_servis').readOnly = true;
+        document.getElementById('total_biaya').readOnly = true
+        $('#tombol_servis').text('Simpan');
+        $('#modalServis').modal('show');   
     }
 
-    function ubahOrder(id_order,tgl_order,nama_pembeli,total_order,status_order){
-        $('#id_order').val(id_order);
-        $('#aksi_order').val('ubah');
-        $('#tgl_order').val(tgl_order);
-        $('#nama_pembeli').val(nama_pembeli);
-        document.getElementById('id_order').readOnly = true;
-        document.getElementById('total_order').readOnly = true;
-        $('#total_order').val(total_order);
-        $('#status_order').val(status_order);
-        $('#tombol_order').text('Ubah');
-        $('#modalOrder').modal('show');   
+    function ubahServis(id,tgl_masuk,nama_pelanggan,nama_teknisi,gejala,diagnosa,kelengkapan,tgl_selesai,total_biaya,status_servis,status_pembayaran,aksi){
+        $('#id_servis').val(id);
+        $('#aksi_servis').val('ubah');
+        $('#tgl_masuk').val(tgl_masuk);
+        $('#nama_pelanggan').val(nama_pelanggan);
+        $('#nama_teknisi').val(nama_teknisi);
+        $('#gejala').val(gejala);
+        $('#diagnosa').val(diagnosa);
+        $('#kelengkapan').val(kelengkapan);
+        $('#tgl_selesai').val(tgl_selesai);
+        $('#total_biaya').val(total_biaya);
+        $('#status_servis').val(status_servis);
+        $('#status_pembayaran').val(status_pembayaran);
+        document.getElementById('id_servis').readOnly = true;
+        document.getElementById('total_biaya').readOnly = true;
+        document.getElementById('tombol_servis1').style.visibility = aksi;
+        $('#tombol_servis').text('Ubah');
+        $('#modalServis').modal('show');   
     }
 
-    function hapusOrder(id,nm) {
-        $('#id_del_order').val(id);
-        $('#aksi_del_order').val('hapus');
-        $('#nama_del_order').text(nm);
-        $('#modalDelOrder').modal('show');                
+    function hapusServis(id,nm) {
+        $('#id_del_servis').val(id);
+        $('#aksi_del_servis').val('hapus');
+        $('#nama_del_servis').text(nm);
+        $('#modalDelServis').modal('show');                
     }
 </script>
 <body class="theme-red">
@@ -88,7 +101,7 @@ while ($cek) {
                         </a>
                     </li>
                     <li class="active">
-                        <i class="material-icons">local_mall</i> Data Order
+                        <i class="material-icons">phonelink_setup</i> Data Servis
                     </li>
                 </ol>
                 <?php 
@@ -108,11 +121,11 @@ while ($cek) {
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
-                            <span style="font-size: 25px"><center>DATA ORDER</center></span>
-                            <button type="button" class="btn bg-blue btn-circle-lg waves-effect waves-circle waves-float waves-light" title="Tambah Data" onclick="tambahOrder('<?php echo $kode ?>');">
+                            <span style="font-size: 25px"><center>DATA SERVIS</center></span>
+                            <button type="button" class="btn bg-blue btn-circle-lg waves-effect waves-circle waves-float waves-light" title="Tambah Data" onclick="tambahServis('<?php echo $kode ?>');">
                                 <i class="material-icons">playlist_add</i>
                             </button>
-                            <a href="_cetak_order.php" target="_blank"><button type="button" class="btn bg-black btn-circle-lg waves-effect waves-circle waves-float waves-light" title="Cetak Data">
+                            <a href="_cetak_servis.php" target="_blank"><button type="button" class="btn bg-black btn-circle-lg waves-effect waves-circle waves-float waves-light" title="Cetak Data">
                                 <i class="material-icons">local_printshop</i>
                             </button></a>
                             <br><br>
@@ -124,9 +137,8 @@ while ($cek) {
                                     <div class="col-md-2">
                                         <select id="status_order" name="status_order" class="form-control col-md-2">
                                             <option value="all">All</option>
-                                            <option value="order">Order</option>
+                                            <option value="order">Aktif</option>
                                             <option value="proses">Proses</option>
-                                            <option value="antar">Antar</option>
                                             <!-- <option value="selesai">Selesai</option>
                                             <option value="batal">Batal</option> -->
                                         </select>
@@ -143,37 +155,41 @@ while ($cek) {
                                     <thead style="background-color:#ff4500; color: white;">
                                         <tr>
                                             <th><center>No</center></th>
-                                            <th><center>Kode Order</center></th>
-                                            <th><center>Tanggal Order</center></th>
-                                            <th><center>Nama Pembeli</center></th>
-                                            <th><center>Total Order</center></th>
-                                            <th><center>Status</center></th>
+                                            <th><center>Kode Servis</center></th>
+                                            <th><center>Tanggal Masuk</center></th>
+                                            <th><center>Nama Pelanggan</center></th>
+                                            <th><center>Teknisi</center></th>
+                                            <th><center>Gejala</center></th>
+                                            <th><center>Status Servis</center></th>
                                             <th><center>Aksi</center></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $result = $dao->viewPenjualan();
+                                        $result = $dao->viewServis();
                                         $no = 1;
                                         foreach ($result as $value){
-                                            $tgl = explode('T', $value['tgl_jual']);
                                             ?>
                                             <tr>
                                                 <td><?php echo $no; $no++; ?></td>
-                                                <td><?php echo $value['id_penjualan'] ?></td>
-                                                <td><?php echo $tgl[0].' '.$tgl[1]; ?></td>
-                                                <td><?php echo $value['nama'] ?></td>
-                                                <td><?php echo $value['total_penjualan'] ?></td>
-                                                <td><?php echo $value['status_penjualan'] ?></td>
+                                                <td><?php echo $value['id_servis'] ?></td>
+                                                <td><?php echo $value['tgl_masuk'];?></td>
+                                                <td><?php echo $value['nama_user'] ?></td>
+                                                <td><?php echo $value['nama_teknisi'] ?></td>
+                                                <td><?php echo $value['gejala'] ?></td>
+                                                <td><?php echo $value['status_servis'] ?></td>
                                                 <td nowrap="">
                                                     <center>
-                                                        <a href="det_order.php?id=<?php echo $value['id_penjualan']; ?>"><button type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float waves-light" title="Detail Order">
+                                                        <a href="det_servis.php?id=<?php echo $value['id_servis']; ?>"><button type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float waves-light" title="Detail Servis">
                                                             <i class="material-icons">subject</i>
                                                         </button></a>
-                                                        <button type="button" class="btn bg-orange btn-circle waves-effect waves-circle waves-float waves-light" title="Edit Data" onclick="ubahOrder('<?php echo $value['id_penjualan']."','".$value['tgl_jual']."','".$value['id_user']."','".$value['total_penjualan']."','".$value['status_penjualan']."'" ?>)">
+                                                        <button type="button" class="btn bg-blue btn-circle waves-effect waves-circle waves-float waves-light" title="Info Servis" onclick="ubahServis('<?php echo $value['id_servis']."','".$value['tgl_masuk']."','".$value['id_user']."','".$value['id_teknisi']."','".$value['gejala']."','".$value['diagnosa']."','".$value['kelengkapan']."','".$value['tgl_selesai']."','".$value['total_biaya']."','".$value['status_servis']."','".$value['status_bayar']."','hidden'" ?>)">
+                                                            <i class="material-icons">help_outline</i>
+                                                        </button>
+                                                        <button type="button" class="btn bg-orange btn-circle waves-effect waves-circle waves-float waves-light" title="Edit Data" onclick="ubahServis('<?php echo $value['id_servis']."','".$value['tgl_masuk']."','".$value['id_user']."','".$value['id_teknisi']."','".$value['gejala']."','".$value['diagnosa']."','".$value['kelengkapan']."','".$value['tgl_selesai']."','".$value['total_biaya']."','".$value['status_servis']."','".$value['status_bayar']."','visible'" ?>)">
                                                             <i class="material-icons">mode_edit</i>
                                                         </button>
-                                                        <button type="button" class="btn bg-red btn-circle waves-effect waves-circle waves-float waves-light" title="Hapus Data" onclick="hapusOrder('<?php echo $value['id_penjualan']."','".$value['nama']."'"?>)">
+                                                        <button type="button" class="btn bg-red btn-circle waves-effect waves-circle waves-float waves-light" title="Hapus Data" onclick="hapusServis('<?php echo $value['id_servis']."','".$value['nama_user']; ?>');">
                                                             <i class="material-icons">delete_forever</i>
                                                         </button>
                                                     </center>
@@ -192,7 +208,7 @@ while ($cek) {
         </div>
 
     </section>
-    <?php include_once '../layout/modal_barang_keluar.php'; ?>
+    <?php include_once '../layout/modal_servis.php'; ?>
     <?php include_once '../layout/js.php'; ?>
     <script>
         $(document).ready(function() {

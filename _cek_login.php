@@ -6,24 +6,24 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 	$level=""; 
 	$nama=""; 
 	$id_user=""; 
+	$email=""; 
 	$hasil = $dao->cekLogin($_POST['username'], $_POST['password']);
-
 	if($hasil->num_rows == 1){  
 		session_start();
 		foreach ($hasil as $value) {
 			$level = $value['level'];
 			$nama = $value['nama'];
 			$id_user = $value['id_user'];
+			$email = $value['email'];
 		}
-		if ($level == "admin") {
-			$_SESSION['level']=$level;
-			$_SESSION['nama']=$nama;	
+		$_SESSION['level']=$level;
+		$_SESSION['nama']=$nama;	
+		$_SESSION['id']=$id_user;	
+		$_SESSION['email']=$email;
+		if ($_SESSION['level'] == "admin") {	
 			header('location:admin/');
 		}
-		else{
-			$_SESSION['level']=$level;
-			$_SESSION['nama']=$nama;	
-			$_SESSION['id']=$id_user;	
+		else{	
 			header('location:pengguna/');	
 		}
 	}

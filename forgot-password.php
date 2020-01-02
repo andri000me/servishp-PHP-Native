@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Forgot Password | Bootstrap Based Admin Template - Material Design</title>
+    <title>Forgot Password | Teknisi Tamvan</title>
     <!-- Favicon-->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
@@ -25,15 +25,26 @@
     <link href="css/style.css" rel="stylesheet">
 </head>
 
-<body class="fp-page">
+<body class="fp-page" style="background-color: #FF6347;">
     <div class="fp-box">
         <div class="logo">
             <a href="javascript:void(0);">Admin<b>BSB</b></a>
             <small>Admin BootStrap Based - Material Design</small>
         </div>
         <div class="card">
+            <?php 
+            if (isset($_GET['pesan']) && !empty($_GET['pesan'])) {
+                $pesan = explode(',', $_GET['pesan']);
+                ?>
+                <div class="alert bg-<?php echo $pesan[0] ?> alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <strong><?php echo $pesan[1]; ?></strong><?php echo $pesan[2]; ?>
+                </div>
+                <?php
+            }
+            ?>
             <div class="body">
-                <form id="forgot_password" method="POST">
+                <form action="_aksi_forgot.php" method="POST">
                     <div class="msg">
                         Enter your email address that you used to register. We'll send you an email with your username and a
                         link to reset your password.
@@ -50,7 +61,7 @@
                     <button class="btn btn-block btn-lg bg-pink waves-effect" type="submit">RESET MY PASSWORD</button>
 
                     <div class="row m-t-20 m-b--5 align-center">
-                        <a href="index.php">Sign In!</a>
+                        <a href="login.php">Sign In!</a>
                     </div>
                 </form>
             </div>

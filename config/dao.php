@@ -92,6 +92,50 @@ class Dao
 			return mysqli_query($this->link->conn, $query);	
 		}
 
+		public function detail($id)
+		{
+			$query = "SELECT * FROM barang WHERE id_barang = '$id'";
+			$result =  mysqli_query($this->link->conn, $query);	
+			return $result->fetch_array();
+		}
+
+		public function insertToken($email,$token)
+		{
+			$query = "UPDATE `users` SET token = '$token' WHERE email = '$email'";
+			return mysqli_query($this->link->conn, $query);	
+		}
+
+		public function updatePass($email,$password)
+		{
+			$query = "UPDATE `users` SET `password` = PASSWORD('$password') WHERE email = '$email'";
+			$result =  mysqli_query($this->link->conn, $query);	
+			if ($result) {
+				return true;
+			}
+			return false;
+		}
+
+		public function validEmail($email)
+		{
+			$query = "SELECT * FROM `users` WHERE email = '$email'";
+			$result =  mysqli_query($this->link->conn, $query);	
+			if ($result->num_rows == 1) {
+				return true;
+			}
+			return false;
+		}
+
+		public function validToken($email,$token)
+		{
+			$query = "SELECT * FROM `users` WHERE token = '$token' AND email = '$email'";
+			$result = mysqli_query($this->link->conn, $query);	
+			if ($result->num_rows == 1) {
+				return true;
+			}
+			return false;
+		}
+
+
 		public function execute($query)
 		{
 			$result = mysqli_query($this->link->conn, $query);

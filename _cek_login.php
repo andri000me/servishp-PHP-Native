@@ -31,7 +31,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 		?>
 		<script language="JavaScript">
 			alert('Login gagal! Username atau Password tidak sesuai.');
-			document.location='index.php';
+			document.location='login.php';
 		</script>
 		<?php
 	}

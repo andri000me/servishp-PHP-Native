@@ -1,91 +1,71 @@
-﻿<!DOCTYPE html>
-<html>
+<?php include_once 'layout/head2.php'; ?>
+<body>
+<?php include_once 'layout/navbar2.php'; ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Sign In | Bootstrap Based Admin Template - Material Design</title>
-    <!-- Favicon-->
-    <link rel="icon" href="favicon.png" type="image/x-icon">
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
-
-    <!-- Bootstrap Core Css -->
-    <link href="plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
-
-    <!-- Waves Effect Css -->
-    <link href="plugins/node-waves/waves.css" rel="stylesheet" />
-
-    <!-- Animation Css -->
-    <link href="plugins/animate-css/animate.css" rel="stylesheet" />
-
-    <!-- Custom Css -->
-    <link href="css/style.css" rel="stylesheet">
-</head>
-
-<body class="login-page">
-    <div class="login-box">
-        <div class="logo">
-            <a href="javascript:void(0);">LogIn<b>Page</b></a>
-            <small>Teknisi Tamvan - Servis dan Penjualan Handphone</small>
-        </div>
-        <div class="card">
-            <div class="body">
-                <form action="_cek_login.php" method="POST">
-                    <div class="msg">Sign in to start your session</div>
-                    <div class="input-group">
-                        <span class="input-group-addon">
-                            <i class="material-icons">person</i>
-                        </span>
-                        <div class="form-line">
-                            <input type="text" class="form-control" name="username" placeholder="Username" required autofocus>
-                        </div>
-                    </div>
-                    <div class="input-group">
-                        <span class="input-group-addon">
-                            <i class="material-icons">lock</i>
-                        </span>
-                        <div class="form-line">
-                            <input type="password" class="form-control" name="password" placeholder="Password" required>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-8 p-t-5">
-                        </div>
-                        <div class="col-xs-4">
-                            <button class="btn btn-block bg-pink waves-effect" type="submit">SIGN IN</button>
-                        </form>
-                    </div>
-                </div>
-                <div class="row m-t-15 m-b--20">
-                    <div class="col-xs-6">
-                        <a href="sign-up.php">Register Now!</a>
-                    </div>
-                    <div class="col-xs-6 align-right">
-                        <a href="forgot-password.php">Forgot Password?</a>
-                    </div>
-                </div>
+  <!-- Page Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner" role="listbox">
+            <div class="carousel-item active">
+              <img class="d-block img-fluid" style="height: 350px; width: 1200px;" src="http://placehold.it/900x350" alt="First slide">
             </div>
+            <div class="carousel-item">
+              <img class="d-block img-fluid" style="height: 350px; width: 1200px;" src="http://placehold.it/900x350" alt="Second slide">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block img-fluid" style="height: 350px; width: 1200px;" src="http://placehold.it/900x350" alt="Third slide">
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
         </div>
+        <div class="row">
+          <?php 
+          include_once 'config/dao.php';
+          $dao = new Dao();
+          $result = $dao->view('barang');
+          // $result = $result->fetch_array();
+          // echo '<pre>',print_r($result),'</pre>';
+          foreach ($result as $value) {
+            ?>
+            <div class="col-lg-3">
+              <div class="card h-100">
+                <a href="#"><img class="card-img-top" style="height: 150px;" src="<?php echo $value['foto'] ?>" alt=""></a>
+                <div class="card-body">
+                  <h4 class="card-title">
+                    <a style="font-size: 23px; color: black" href="detail.php?id=<?php echo $value['id_barang'];?>"><?php echo $value['nama_barang'] ?></a>
+                  </h4>
+                  <h5 style="color: red;"><strong>Rp. <?php echo $value['harga_jual'] ?></strong></h5>
+                  <medium class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</medium>
+                  <p class="card-text" style="font-size: 12px">Stok Tersedia : <?php echo $value['stok']?></p>
+                </div>
+                <div class="card-footer">
+                  <a href="detail.php?id=<?php echo $value['id_barang'];?>"><button class="btn btn-outline-primary btn-sm">Detail</button></a>
+                  <button class="btn btn-outline-success btn-sm">Masukkan Keranjang</button>
+                </div>
+              </div>
+            </div>
+            <?php
+          }
+          ?>
+        </div>
+      </div>
     </div>
+  </div>
 
-    <!-- Jquery Core Js -->
-    <script src="plugins/jquery/jquery.min.js"></script>
-
-    <!-- Bootstrap Core Js -->
-    <script src="plugins/bootstrap/js/bootstrap.js"></script>
-
-    <!-- Waves Effect Plugin Js -->
-    <script src="plugins/node-waves/waves.js"></script>
-
-    <!-- Validation Plugin Js -->
-    <script src="plugins/jquery-validation/jquery.validate.js"></script>
-
-    <!-- Custom Js -->
-    <script src="js/admin.js"></script>
-    <script src="js/pages/examples/sign-in.js"></script>
+<?php include_once 'layout/footer.php'; ?>
 </body>
-
 </html>

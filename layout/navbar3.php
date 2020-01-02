@@ -12,10 +12,13 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="servis.php" style="color: white;">Services</a>
+            <a class="nav-link" href="servis.php" style="color: white;">Pembelian</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="login.php" style="color: white;">Log In</a>
+            <a class="nav-link" href="login.php" style="color: white;">Servis</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="login.php" style="color: white;">Log Out</a>
         </li>
     </ul>
 </div>

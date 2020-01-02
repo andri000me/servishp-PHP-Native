@@ -29,12 +29,12 @@ if (!empty($_POST['email'])) {
 		$mail->setFrom($username, $alias);
 		$mail->addReplyTo($username, $alias);
 		$mail->addAddress($to);
-		$mail->Subject = 'Aktivasi Akun Teknisi Tamvan';
+		$mail->Subject = 'Reset Password Akun Teknisi Tamvan';
 		$mail->isHTML(true);
 
 		$mailContent='
-		Silakan Klik Tombol dibawah ini untuk aktivasi akun anda<br> 
-		<a href="http://localhost/servishp/reset-password.php?token='.$token.'&email='.$to.'"><button style="background-color: #4CAF50; border: none;  color: white;  padding: 15px 32px;  text-align: center;  text-decoration: none;  display: inline-block;  font-size: 16px;">AKTIVASI</button></a>';
+		Silakan Klik Tombol dibawah ini untuk mengubah password akun anda<br> 
+		<a href="http://localhost/servishp/reset-password.php?token='.$token.'&email='.$to.'"><button style="background-color: #4CAF50; border: none;  color: white;  padding: 15px 32px;  text-align: center;  text-decoration: none;  display: inline-block;  font-size: 16px;">RESET PASSWORD</button></a>';
 		$mail->Body = $mailContent;
 	}
 }

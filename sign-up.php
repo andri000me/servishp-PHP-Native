@@ -6,7 +6,7 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title>Sign Up | Teknisi Tamvan</title>
     <!-- Favicon-->
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.png" type="image/x-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
@@ -32,15 +32,33 @@
             <small>Admin BootStrap Based - Material Design</small>
         </div>
         <div class="card">
+            <?php 
+            if (isset($_GET['pesan']) && !empty($_GET['pesan'])) {
+                $pesan = explode(',', $_GET['pesan']);
+                ?>
+                <div class="alert bg-<?php echo $pesan[0] ?> alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <strong><?php echo $pesan[1]; ?></strong><?php echo $pesan[2]; ?>
+                </div>
+                <?php
+            }?>
             <div class="body">
-                <form id="sign_up" method="POST">
+                <form action="_aksi_register.php" method="POST">
                     <div class="msg">Register a new membership</div>
                     <div class="input-group">
                         <span class="input-group-addon">
                             <i class="material-icons">person</i>
                         </span>
                         <div class="form-line">
-                            <input type="text" class="form-control" name="namesurname" placeholder="Name Surname" required autofocus>
+                            <input type="text" class="form-control" name="nama" placeholder="Name" required autofocus>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">person</i>
+                        </span>
+                        <div class="form-line">
+                            <input type="text" class="form-control" name="username" placeholder="Username" required autofocus>
                         </div>
                     </div>
                     <div class="input-group">
@@ -49,6 +67,22 @@
                         </span>
                         <div class="form-line">
                             <input type="email" class="form-control" name="email" placeholder="Email Address" required>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">perm_phone_msg</i>
+                        </span>
+                        <div class="form-line">
+                            <input type="text" class="form-control" name="no_tlp" placeholder="Telephone Number" required>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">location_on</i>
+                        </span>
+                        <div class="form-line">
+                            <textarea class="form-control" name="alamat" rows="3" style="resize: none;" placeholder="Address"></textarea>
                         </div>
                     </div>
                     <div class="input-group">

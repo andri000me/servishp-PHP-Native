@@ -135,6 +135,11 @@ class Dao
 			return false;
 		}
 
+		public function aktivasi($email)
+		{
+			$query = "UPDATE `users` SET status = '1' WHERE email = '$email'";
+			return mysqli_query($this->link->conn, $query);
+		}
 
 		public function execute($query)
 		{

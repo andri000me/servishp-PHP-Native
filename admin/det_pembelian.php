@@ -31,11 +31,12 @@ else{
         $('#stok_lama').val('');
         $('#stok').val('');
         $('#satuan').val('');
+        $('#deskripsi').val('');
         $('#tombol_barang').text('Simpan');
         $('#modalBarang').modal('show');   
     }
 
-    function ubahBarang(id_barang,id_beli,nama_barang,harga_beli,harga_jual,stok,satuan){
+    function ubahBarang(id_barang,id_beli,nama_barang,harga_beli,harga_jual,stok,satuan,deskripsi){
         $('#id_barang').val(id_barang);
         $('#id_beli').val(id_beli);
         $('#aksi_barang').val('ubah');
@@ -46,6 +47,7 @@ else{
         $('#stok_lama').val(stok);
         $('#stok').val(stok);
         $('#satuan').val(satuan);
+        $('#deskripsi').val(deskripsi);
         $('#tombol_barang').text('Ubah');
         $('#modalBarang').modal('show');   
     }
@@ -164,7 +166,7 @@ else{
                                                         <td><?php echo $value['satuan'] ?></td>
                                                         <td nowrap="">
                                                             <center>
-                                                                <button type="button" class="btn bg-orange btn-circle waves-effect waves-circle waves-float waves-light" title="Edit Data" onclick="ubahBarang('<?php echo $value['id_barang']."','".$id."','".$value['nama_barang']."','".$value['harga_beli']."','".$value['harga_jual']."','".$value['stok']."','".$value['satuan']."'"; ?>)">
+                                                                <button type="button" class="btn bg-orange btn-circle waves-effect waves-circle waves-float waves-light" title="Edit Data" onclick="ubahBarang('<?php echo $value['id_barang']."','".$id."','".$value['nama_barang']."','".$value['harga_beli']."','".$value['harga_jual']."','".$value['stok']."','".$value['satuan']."','".$value['deskripsi']."'"; ?>)">
                                                                     <i class="material-icons">mode_edit</i>
                                                                 </button>
                                                                 <button type="button" class="btn bg-red btn-circle waves-effect waves-circle waves-float waves-light" title="Hapus Data" onclick="hapusBarang('<?php echo $value['id_barang']."','".$value['nama_barang']."','".$id."','".$value['harga_beli']."','".$value['stok']."'"; ?>)">

@@ -99,6 +99,12 @@
            <input type="file" id="foto" name="foto" class="form-control">
          </div>
        </div>
+       <div class="row">
+          <div class="col-md-12">
+           <label>Deskripsi Barang</label>
+           <textarea class="form-control" name="deskripsi" id="deskripsi" rows="5" style="resize: none;"></textarea>
+         </div>
+       </div>
      </div>
      <div class="modal-footer">
       <button type="submit" class="btn bg-blue waves-effect" id="tombol_pengguna1">

@@ -68,7 +68,7 @@ else{
                         <div class="col-xs-8 p-t-5">
                         </div>
                         <div class="col-xs-4">
-                            <button class="btn btn-block bg-pink waves-effect" type="submit">UPDATE PASSWORD</button>
+                            <button class="btn btn-block bg-pink waves-effect" type="submit">UPDATE</button>
                         </form>
                     </div>
                 </div>

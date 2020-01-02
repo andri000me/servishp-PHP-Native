@@ -15,6 +15,7 @@ if (isset($_POST['aksi_barang'])) {
 		$harga_jual = $_POST['harga_jual'];
 		$stok = $_POST['stok'];
 		$satuan = $_POST['satuan'];
+		$deskripsi = $_POST['deskripsi'];
 		$uploadOk = 1;
 		if(isset($_POST['aksi_barang'])) {
 			if (isset($_FILES["foto"])) {
@@ -28,7 +29,7 @@ if (isset($_POST['aksi_barang'])) {
 				}
 			}
 		}
-		$query = "INSERT INTO `barang`(`id_pembelian`, `nama_barang`,`harga_beli`,`harga_jual`,`stok`,`satuan`,`foto`) VALUES ('$id_beli','$nama_barang','$harga_beli','$harga_jual','$stok','$satuan', '$foto')";
+		$query = "INSERT INTO `barang`(`id_pembelian`, `nama_barang`,`harga_beli`,`harga_jual`,`stok`,`satuan`,`foto`,`deskripsi`) VALUES ('$id_beli','$nama_barang','$harga_beli','$harga_jual','$stok','$satuan', '$foto', '$deskripsi')";
 		$dao->execute($query);
 		$query = "UPDATE `pembelian` SET `total_beli` = total_beli+($harga_beli*$stok) WHERE id_pembelian='$id_beli'";
 		if ($dao->execute($query)) {
@@ -59,7 +60,7 @@ if (isset($_POST['aksi_barang'])) {
 				}
 			}
 		}
-		$query = "UPDATE `barang` SET nama_barang='$nama_barang', harga_beli = '$harga_beli', harga_jual='$harga_jual', stok='$stok', satuan='$satuan' WHERE id_barang = '$id_barang'";
+		$query = "UPDATE `barang` SET nama_barang='$nama_barang', harga_beli = '$harga_beli', harga_jual='$harga_jual', stok='$stok', satuan='$satuan', deskripsi='$deskripsi' WHERE id_barang = '$id_barang'";
 		$dao->execute($query);
 
 		if ($foto != null) {

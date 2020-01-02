@@ -57,7 +57,7 @@ if (empty($result)){
           <div class="card">
             <div class="card-header"><h5><strong>Deskripsi Produk</strong></h5></div>
             <div class="card-body">
-              <p>Bla BLa bLa bLa bLA Blas</p>
+              <p><?php echo $result['deskripsi']; ?></p>
             </div>
           </div>
         </div>

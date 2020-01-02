@@ -32,6 +32,16 @@
             <small>Teknisi Tamvan - Servis dan Penjualan Sparepart Handphone</small>
         </div>
         <div class="card">
+            <?php 
+            if (isset($_GET['pesan']) && !empty($_GET['pesan'])) {
+                $pesan = explode(',', $_GET['pesan']);
+                ?>
+                <div class="alert bg-<?php echo $pesan[0] ?> alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <strong><?php echo $pesan[1]; ?></strong><?php echo $pesan[2]; ?>
+                </div>
+                <?php
+            }?>
             <div class="body">
                 <form action="_cek_login.php" method="POST">
                     <div class="msg">Sign in to start your session</div>

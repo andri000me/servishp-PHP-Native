@@ -1,6 +1,6 @@
 /*
 SQLyog Community v13.1.5  (64 bit)
-MySQL - 10.4.8-MariaDB : Database - servishp
+MySQL - 5.6.21 : Database - servishp
 *********************************************************************
 */
 
@@ -12,7 +12,7 @@ MySQL - 10.4.8-MariaDB : Database - servishp
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`servishp` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`servishp` /*!40100 DEFAULT CHARACTER SET latin1 */;
 
 USE `servishp`;
 
@@ -29,19 +29,19 @@ CREATE TABLE `barang` (
   `stok` int(11) DEFAULT NULL,
   `satuan` varchar(50) DEFAULT NULL,
   `foto` varchar(100) DEFAULT NULL,
+  `deskripsi` text,
   PRIMARY KEY (`id_barang`),
   KEY `barang_ibfk_1` (`id_pembelian`),
   CONSTRAINT `barang_ibfk_1` FOREIGN KEY (`id_pembelian`) REFERENCES `pembelian` (`id_pembelian`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
 
 /*Data for the table `barang` */
 
-insert  into `barang`(`id_barang`,`id_pembelian`,`nama_barang`,`harga_beli`,`harga_jual`,`stok`,`satuan`,`foto`) values 
-(10,1,'Soft Case OPPO A7s Hitam',25000,30000,8,'pcs','http://localhost/servishp/images/Soft Case OPPO A7s Hitam-211219.png'),
-(11,1,'Soft Case OPPO A7s Pink',25000,30000,10,'pcs','http://localhost/servishp/images/Soft Case OPPO A7s Pink-211219.png'),
-(26,13,'Jasa servis 1',0,5000,1000000,'pcs','http://localhost/servishp/images/default.jpg'),
-(27,13,'Jasa servis 2',0,10000,1000000,'pcs','http://localhost/servishp/images/default.jpg'),
-(28,1,'Port Micro B Charger ',20000,25000,20,'pcs','http://localhost/servishp/images/default.jpg');
+insert  into `barang`(`id_barang`,`id_pembelian`,`nama_barang`,`harga_beli`,`harga_jual`,`stok`,`satuan`,`foto`,`deskripsi`) values 
+(10,1,'Soft Case OPPO A7s Hitam',25000,30000,8,'pcs','http://localhost/servishp/images/Soft Case OPPO A7s Hitam-211219.png','Ukuran 5 Inchi, Bahan Karet'),
+(26,13,'Jasa servis 1',0,5000,999998,'pcs','http://localhost/servishp/images/default.jpg',NULL),
+(27,13,'Jasa servis 2',0,10000,1000000,'pcs','http://localhost/servishp/images/default.jpg',NULL),
+(30,1,'Henset Samsung KW',12000,15000,10,'pcs','http://localhost/servishp/images/default.jpg','KW super');
 
 /*Table structure for table `detail_penjualan` */
 
@@ -58,7 +58,7 @@ CREATE TABLE `detail_penjualan` (
   KEY `id_jual` (`id_jual`),
   CONSTRAINT `detail_penjualan_ibfk_1` FOREIGN KEY (`id_barang`) REFERENCES `barang` (`id_barang`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `detail_penjualan_ibfk_2` FOREIGN KEY (`id_jual`) REFERENCES `penjualan` (`id_penjualan`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 /*Data for the table `detail_penjualan` */
 
@@ -78,15 +78,15 @@ CREATE TABLE `detail_servis` (
   PRIMARY KEY (`id_detservis`),
   KEY `id_barang` (`id_barang`),
   KEY `servis_id` (`servis_id`),
-  CONSTRAINT `detail_servis_ibfk_1` FOREIGN KEY (`id_barang`) REFERENCES `barang` (`id_barang`),
-  CONSTRAINT `detail_servis_ibfk_2` FOREIGN KEY (`servis_id`) REFERENCES `servis` (`id_servis`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+  CONSTRAINT `detail_servis_ibfk_1` FOREIGN KEY (`id_barang`) REFERENCES `barang` (`id_barang`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `detail_servis_ibfk_2` FOREIGN KEY (`servis_id`) REFERENCES `servis` (`id_servis`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 /*Data for the table `detail_servis` */
 
 insert  into `detail_servis`(`id_detservis`,`servis_id`,`id_barang`,`jml`,`subtotal`) values 
-(2,'DASDJLA',28,1,25000),
-(3,'DASDJLA',26,1,5000);
+(3,'DASDJLA',26,1,5000),
+(9,'NTBJ0NEB',26,1,5000);
 
 /*Table structure for table `pembelian` */
 
@@ -96,17 +96,17 @@ CREATE TABLE `pembelian` (
   `id_pembelian` int(11) NOT NULL AUTO_INCREMENT,
   `tgl_beli` date DEFAULT NULL,
   `id_supplier` int(11) DEFAULT NULL,
-  `total_beli` int(11) DEFAULT 0,
+  `total_beli` int(11) DEFAULT '0',
   `status_beli` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_pembelian`),
   KEY `id_supplier` (`id_supplier`),
-  CONSTRAINT `pembelian_ibfk_1` FOREIGN KEY (`id_supplier`) REFERENCES `supplier` (`id_supplier`)
+  CONSTRAINT `pembelian_ibfk_1` FOREIGN KEY (`id_supplier`) REFERENCES `supplier` (`id_supplier`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 /*Data for the table `pembelian` */
 
 insert  into `pembelian`(`id_pembelian`,`tgl_beli`,`id_supplier`,`total_beli`,`status_beli`) values 
-(1,'2019-12-02',1,50000,'lunas'),
+(1,'2019-12-02',1,420000,'lunas'),
 (13,'2019-12-01',4,0,'lunas');
 
 /*Table structure for table `penjualan` */
@@ -119,6 +119,7 @@ CREATE TABLE `penjualan` (
   `tgl_jual` varchar(20) DEFAULT NULL,
   `total_penjualan` int(11) DEFAULT NULL,
   `status_penjualan` enum('order','proses','kirim','selesai','batal','aktif') DEFAULT 'order',
+  `penilaian_pelanggan` text,
   PRIMARY KEY (`id_penjualan`),
   KEY `id_user` (`id_user`),
   CONSTRAINT `penjualan_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE
@@ -126,8 +127,8 @@ CREATE TABLE `penjualan` (
 
 /*Data for the table `penjualan` */
 
-insert  into `penjualan`(`id_penjualan`,`id_user`,`tgl_jual`,`total_penjualan`,`status_penjualan`) values 
-('NNHK950X',2,'2019-12-23T13:11',60000,'aktif');
+insert  into `penjualan`(`id_penjualan`,`id_user`,`tgl_jual`,`total_penjualan`,`status_penjualan`,`penilaian_pelanggan`) values 
+('NNHK950X',2,'2019-12-23T13:11',60000,'aktif',NULL);
 
 /*Table structure for table `servis` */
 
@@ -139,13 +140,13 @@ CREATE TABLE `servis` (
   `id_teknisi` int(11) DEFAULT NULL,
   `tgl_masuk` date DEFAULT NULL,
   `tgl_selesai` date DEFAULT NULL,
-  `gejala` text CHARACTER SET utf8mb4 DEFAULT NULL,
-  `kelengkapan` text CHARACTER SET utf8mb4 DEFAULT NULL,
+  `gejala` text CHARACTER SET utf8mb4,
+  `kelengkapan` text CHARACTER SET utf8mb4,
   `total_biaya` int(11) DEFAULT NULL,
-  `diagnosa` text CHARACTER SET utf8mb4 DEFAULT NULL,
+  `diagnosa` text CHARACTER SET utf8mb4,
   `status_servis` varchar(20) CHARACTER SET utf8mb4 DEFAULT NULL,
   `status_bayar` varchar(20) CHARACTER SET utf8mb4 DEFAULT NULL,
-  `penilaian_pembeli` text DEFAULT NULL,
+  `penilaian_pelanggan` text,
   PRIMARY KEY (`id_servis`),
   KEY `id_user` (`id_user`),
   KEY `id_teknisi` (`id_teknisi`),
@@ -155,8 +156,9 @@ CREATE TABLE `servis` (
 
 /*Data for the table `servis` */
 
-insert  into `servis`(`id_servis`,`id_user`,`id_teknisi`,`tgl_masuk`,`tgl_selesai`,`gejala`,`kelengkapan`,`total_biaya`,`diagnosa`,`status_servis`,`status_bayar`,`penilaian_pembeli`) values 
-('DASDJLA',2,2,'2019-12-16','2019-12-23','Tidak Dapat di cas','hp batangan',30000,'lubang charger rusak\r\nperkiraan biaya sekitar 35 rb','aktif','belum lunas','5-Pelayanan nya memuaskan');
+insert  into `servis`(`id_servis`,`id_user`,`id_teknisi`,`tgl_masuk`,`tgl_selesai`,`gejala`,`kelengkapan`,`total_biaya`,`diagnosa`,`status_servis`,`status_bayar`,`penilaian_pelanggan`) values 
+('DASDJLA',2,6,'2019-12-16','2019-12-23','Tidak Dapat di cas','hp batangan',30000,'lubang charger rusak perkiraan biaya sekitar 35 rb','aktif','Belum Lunas','5-Pelayanan nya memuaskan'),
+('NTBJ0NEB',2,6,'2019-12-10','2019-12-13','Layar Berkedip','HP, Cas, Silikon, Gurita',90000,'LCD rusak','selesai','Belum Lunas',NULL);
 
 /*Table structure for table `supplier` */
 
@@ -187,13 +189,14 @@ CREATE TABLE `teknisi` (
   `alamat` varchar(50) DEFAULT NULL,
   `no_tlp` varchar(13) DEFAULT NULL,
   PRIMARY KEY (`id_teknisi`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 /*Data for the table `teknisi` */
 
 insert  into `teknisi`(`id_teknisi`,`nama`,`alamat`,`no_tlp`) values 
 (2,'Dihki Ardhianto','Gunung Kidul','09212212039'),
-(4,'Dwiki Likuisa','Jl. Dr. Wahidin Sudirohusodo','089438492382');
+(4,'Dwiki Likuisa','Jl. Dr. Wahidin Sudirohusodo','089438492382'),
+(6,'Belum Ada','-','-');
 
 /*Table structure for table `users` */
 
@@ -207,17 +210,18 @@ CREATE TABLE `users` (
   `email` varchar(50) DEFAULT NULL,
   `username` varchar(50) DEFAULT NULL,
   `password` varchar(100) DEFAULT NULL,
-  `status` int(11) DEFAULT 0,
+  `status` int(11) DEFAULT '0',
   `token` varchar(20) DEFAULT NULL,
   `level` enum('admin','pengguna') DEFAULT 'pengguna',
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 /*Data for the table `users` */
 
 insert  into `users`(`id_user`,`nama`,`alamat`,`no_tlp`,`email`,`username`,`password`,`status`,`token`,`level`) values 
-(2,'Customer Ku','Yogya','088111111000','wkwk@gmail.com','customer','*2A1A57C49941F3BE8E4CEB49E4929EF2F8117AF0',1,'USDSDB_313213','pengguna'),
-(4,'Administrator','Jl Dr Angk','02312312931','doni@gmail.com','admin','*01A6717B58FF5C7EAFFF6CB7C96F7428EA65FE4C',0,NULL,'admin');
+(2,'Customer Kuku','Yogya Ku','088111111000','likuisa78@gmail.com','customer','*B5298937BC617F0D12A42D840452DDBA4B55DBC4',1,'CVVIHH_1577961383','pengguna'),
+(4,'Administrator','Jl Dr Angk','02312312931','doni@gmail.com','admin','*4ACFE3202A5FF5CF467898FC58AAB1D615029441',0,NULL,'admin'),
+(7,'Dwiki Likuisa','Jogja','089619200224','dwiki.likuisa@spesolution.com','dwiki','*2A1A57C49941F3BE8E4CEB49E4929EF2F8117AF0',1,'DJOSBK_1577977348','pengguna');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

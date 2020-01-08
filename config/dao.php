@@ -20,6 +20,12 @@ class Dao
 			return mysqli_query($this->link->conn, $query);	
 		}
 
+		public function viewProfil($id)
+		{	
+			$query = "SELECT * FROM `users` WHERE id_user = '$id'";
+			return mysqli_query($this->link->conn, $query);	
+		}
+
 		public function viewCombobox($tabel,$order, $sort = 'ASC')
 		{	
 			$query = "SELECT * FROM $tabel ORDER by $order $sort";

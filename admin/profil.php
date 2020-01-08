@@ -63,7 +63,7 @@
                         include_once '../config/dao.php';
                         $dao = new Dao();
                         $id = $_SESSION['id'];
-                        $profil = $dao->view('users');
+                        $profil = $dao->viewProfil($id);
                         $profil = $profil->fetch_array();
                         // var_dump($profil);
                         ?>

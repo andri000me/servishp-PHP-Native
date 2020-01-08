@@ -7,7 +7,7 @@ if (empty($_GET['id'])){
   <?php
 } 
 
-include_once 'config/dao.php';
+include_once '../config/dao.php';
 $dao = new Dao();
 $result = $dao->detail($_GET['id']);
 if (empty($result)){
@@ -19,9 +19,9 @@ if (empty($result)){
 } 
 // echo '<pre>',var_dump($result),'</pre>'
 ?>
-<?php include_once 'layout/head2.php'; ?>
+<?php include_once '../layout/head3.php'; ?>
 <body>
-  <?php include_once 'layout/navbar2.php'; ?>
+  <?php include_once '../layout/navbar3.php'; ?>
   <!-- Page Content -->
   <div class="container">
     <div class="card-body">
@@ -46,9 +46,9 @@ if (empty($result)){
             </div>
           </div><br><br>
           <div class="card-footer">
-            <a href="login.php"><button class="btn btn-outline-danger">Masukkan Keranjang</button></a>
-            <a href="login.php"><button class="btn btn-secondary">Beli Sekarang</button></a>
-            <a href="../servishp"><button class="btn btn-warning"><< Kembali</button></a>
+            <button class="btn btn-outline-danger">Masukkan Keranjang</button>
+            <button class="btn btn-secondary">Beli Sekarang</button>
+            <a href="../pengguna"><button class="btn btn-warning"><< Kembali</button></a>
           </div>
         </div>
       </div><br><br>
@@ -83,6 +83,6 @@ if (empty($result)){
     </div>
   </div>
 
-  <?php include_once 'layout/footer.php'; ?>
+  <?php include_once '../layout/footer2.php'; ?>
 </body>
 </html>

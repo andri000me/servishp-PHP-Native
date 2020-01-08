@@ -54,7 +54,7 @@
                 </div>
                 <div class="card-footer">
                   <a href="detail.php?id=<?php echo $value['id_barang'];?>"><button class="btn btn-outline-primary btn-sm">Detail</button></a>
-                  <button class="btn btn-outline-success btn-sm">Masukkan Keranjang</button>
+                  <a href="login.php"><button class="btn btn-outline-success btn-sm">Masukkan Keranjang</button></a>
                 </div>
               </div>
             </div>

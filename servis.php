@@ -20,8 +20,8 @@
       </div>
     </div>
     <div class="card-footer">
-      <button class="btn btn-outline-primary">Ajukan Pertanyaan</button>
-      <button class="btn btn-success">Servis HP</button>
+      <a href="login.php"><button class="btn btn-outline-primary">Ajukan Pertanyaan</button></a>
+      <a href="login.php"><button class="btn btn-success">Servis HP</button></a>
     </div>
   </div>
 </body>

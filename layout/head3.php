@@ -1,3 +1,14 @@
+<?php 
+error_reporting('off');
+session_start();
+if ($_SESSION['level'] != "pengguna" || empty($_SESSION['level'])) {
+?>
+    <script type="text/javascript">
+        document.location = '../';
+    </script>
+<?php    
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

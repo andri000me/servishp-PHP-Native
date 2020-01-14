@@ -169,6 +169,66 @@ class Dao
 		return mysqli_query($this->link->conn, $query);	
 	}
 
+	public function gantiStatus($id, $aksi)
+	{	
+		$query = "UPDATE penjualan SET status_penjualan = '$aksi' WHERE id_penjualan = '$id'";
+		return mysqli_query($this->link->conn, $query);	
+	}
+
+	public function updateStok($id)
+	{	
+		$data = $this->viewDetPenjualan($id);
+		foreach ($data as $value) {
+			$sql = "UPDATE barang SET stok = stok + ".$value['jml_jual']." WHERE id_barang = '".$value['id_barang']."'";
+			$this->execute($sql);
+		}
+		return true;
+	}
+
+	public function totalKeranjang($id)
+	{	
+		$query = "select sum(sub_total) as total from temp_keranjang where id_user = '$id'";
+		$result = mysqli_query($this->link->conn, $query);
+		$result = $result->fetch_array();
+		return $result['total'];
+	}
+
+	public function generateKode()
+	{
+		$cek = true;
+		$kode = '';
+		while ($cek) {
+			$characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+			$charactersLength = strlen($characters);
+			for ($i = 0; $i < 8; $i++) {
+				$kode .= $characters[rand(0, $charactersLength - 1)];
+			}
+			$result = $this->execute("SELECT * FROM `penjualan` WHERE id_penjualan = '$kode'");
+			if ($result->num_rows == 0) {
+				$cek = false;
+			}
+		}
+		return $kode;
+	}
+
+	public function prosesCheckout($id)
+	{
+		$kode = $this->generateKode();
+		$total = $this->totalKeranjang($id);
+		$datacheckout = $this->execute("SELECT * FROM temp_keranjang WHERE id_user = '$id'");
+		$time = date("Y-m-d")."T".date("G:i");
+		$sql = "INSERT INTO penjualan VALUES ('$kode','$id','$time','$total','order','')";
+		$this->execute($sql);
+		foreach ($datacheckout as $value) {
+			$sql = "INSERT INTO `detail_penjualan` (id_jual,id_barang,jml_jual,subtotal_jual) VALUES ('$kode','".$value['id_barang']."','".$value['jumlah']."','".$value['sub_total']."')";
+			$this->execute($sql);
+			$sql = "UPDATE barang SET stok = stok - ".$value['jumlah']." WHERE id_barang = '".$value['id_barang']."'";
+			$this->execute($sql);
+		}
+		$sql = "DELETE FROM temp_keranjang WHERE id_user = '$id'";
+		return $this->execute($sql);
+	}
+
 	public function execute($query)
 	{
 		$result = mysqli_query($this->link->conn, $query);

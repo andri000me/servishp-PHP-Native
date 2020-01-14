@@ -1,6 +1,7 @@
 <?php include_once '../layout/head3.php'; ?>
 <script type="text/javascript">
   function addKeranjang() {
+    // document.getElementById("jumlah").max = "10";
     $('#modalKeranjang').modal('show');    
   }
 </script>

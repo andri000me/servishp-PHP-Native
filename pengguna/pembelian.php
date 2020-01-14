@@ -8,13 +8,6 @@
 		<h2><center><strong>Pembelian</strong></center></h2>
 		<br><br>
 		<table class="table table-striped">
-			<?php 
-			session_start();
-			include_once '../config/dao.php';
-			$dao = new Dao();
-			$result = $dao->viewPenjualanBarang($_SESSION['id']);
-			foreach ($result as $value) {
-				?>
 				<thead>
 					<tr>
 						<td>Kode Transaksi</td>
@@ -25,11 +18,18 @@
 					</tr>
 				</thead>
 				<tbody>
+					<?php 
+					session_start();
+					include_once '../config/dao.php';
+					$dao = new Dao();
+					$result = $dao->viewPenjualanBarang($_SESSION['id']);
+					foreach ($result as $value) {
+						?>
 					<tr>
 						<td><?php echo $value['id_penjualan'] ?></td>
 						<td><?php echo $value['tgl_jual'] ?></td>
 						<td>Rp <?php echo $value['total_penjualan'] ?></td>
-						<td><?php echo $value['status'] ?></td>
+						<td><?php echo $value['status_penjualan'] ?></td>
 						<td nowrap="">
 							<a href="det_pembelian.php?id=<?php echo $value['id_penjualan'] ?>"><button class="btn btn-sm btn-primary">Detail</button></a>
 						</td>

@@ -20,6 +20,13 @@ else{
 
 ?>
 <?php include_once '../layout/head3.php'; ?>
+<script type="text/javascript">
+    function batalPesanan(id_del) {
+        $('#id_del').val(id_del);    
+        $('#nama_del').text(id_del);    
+        $('#modalBatal').modal('show');    
+    }
+</script>
 <body>
     <?php include_once '../layout/navbar3.php'; ?>
 
@@ -69,15 +76,15 @@ else{
             <div class="row">
                 <div class="col-md-7"></div>
                 <div class="col-md-3">
-                    <span style="font-size: 20px">Subtotal</span> <strong><span style="color: red; font-size: 24px">Rp 200000 </span></strong>
+                    <span style="font-size: 20px">Subtotal</span> <strong><span style="color: red; font-size: 24px">Rp <?php echo $total_order ?> </span></strong>
                 </div>
                 <div class="col-md-2">
-                    <button class="btn btn-block" style="background-color: red; color: white;">Batalkan Pesanan</button>
+                    <button class="btn btn-block" type="button" onclick="batalPesanan('<?php echo $kd_transaksi ?>');" style="background-color: red; color: white;">Batalkan Pesanan</button>
                 </div>
             </div>
             <br>
         </div>
-
+        <?php include_once '../layout/modal_pengguna.php'; ?>
         <?php include_once '../layout/footer2.php'; ?>
     </body>
     </html>

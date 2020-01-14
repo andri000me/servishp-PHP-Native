@@ -1,4 +1,9 @@
 <?php include_once '../layout/head3.php'; ?>
+<script type="text/javascript">
+  function addKeranjang() {
+    $('#modalKeranjang').modal('show');    
+  }
+</script>
 <body>
 <?php include_once '../layout/navbar3.php'; ?>
 
@@ -54,7 +59,7 @@
                 </div>
                 <div class="card-footer">
                   <a href="detail.php?id=<?php echo $value['id_barang'];?>"><button class="btn btn-outline-primary btn-sm">Detail</button></a>
-                  <button class="btn btn-outline-success btn-sm">Masukkan Keranjang</button>
+                  <button class="btn btn-outline-success btn-sm" type="button" onclick="addKeranjang();">Masukkan Keranjang</button>
                 </div>
               </div>
             </div>
@@ -66,6 +71,7 @@
     </div>
   </div>
 
+<?php include_once '../layout/modal_pengguna.php'; ?>
 <?php include_once '../layout/footer2.php'; ?>
 </body>
 </html>

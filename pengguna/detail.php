@@ -20,6 +20,11 @@ if (empty($result)){
 // echo '<pre>',var_dump($result),'</pre>'
 ?>
 <?php include_once '../layout/head3.php'; ?>
+<script type="text/javascript">
+  function addKeranjang() {
+    $('#modalKeranjang').modal('show');    
+  }
+</script>
 <body>
   <?php include_once '../layout/navbar3.php'; ?>
   <!-- Page Content -->
@@ -35,19 +40,13 @@ if (empty($result)){
           <div class="card-body" style="background-color: #FAEBD7; color: red;"><h3><strong>Rp 30000</strong></h3></div><br>
           <span>Pengiriman : Only COD</span><br><br>
           <div class="row">
-            <div class="col-md-2">
-              <label>Kuantitas</label>
-            </div>
-            <div class="col-md-2">
-              <input type="number" name="Kuantitas" class="form-control sm" placeholder="0">
-            </div>
             <div class="col-md-5">
               <label> Tersisa : <?php echo $result['stok']; ?></label>
             </div>
           </div><br><br>
           <div class="card-footer">
-            <button class="btn btn-outline-danger">Masukkan Keranjang</button>
-            <button class="btn btn-secondary">Beli Sekarang</button>
+            <button class="btn btn-outline-danger" type="button" onclick="addKeranjang();">Masukkan Keranjang</button>
+            <!-- <button class="btn btn-secondary">Beli Sekarang</button> -->
             <a href="../pengguna"><button class="btn btn-warning"><< Kembali</button></a>
           </div>
         </div>
@@ -83,6 +82,7 @@ if (empty($result)){
     </div>
   </div>
 
+  <?php include_once '../layout/modal_pengguna.php'; ?>
   <?php include_once '../layout/footer2.php'; ?>
 </body>
 </html>

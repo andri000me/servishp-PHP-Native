@@ -41,7 +41,7 @@ insert  into `barang`(`id_barang`,`id_pembelian`,`nama_barang`,`harga_beli`,`har
 (10,1,'Soft Case OPPO A7s Hitam',25000,30000,8,'pcs','http://localhost/servishp/images/Soft Case OPPO A7s Hitam-211219.png','Ukuran 5 Inchi, Bahan Karet'),
 (26,13,'Jasa servis 1',0,5000,999998,'pcs','http://localhost/servishp/images/default.jpg',NULL),
 (27,13,'Jasa servis 2',0,10000,1000000,'pcs','http://localhost/servishp/images/default.jpg',NULL),
-(30,1,'Henset Samsung KW',12000,15000,10,'pcs','http://localhost/servishp/images/default.jpg','KW super');
+(30,1,'Henset Samsung KW 12',12000,15000,10,'pcs','http://localhost/servishp/images/default.jpg','');
 
 /*Table structure for table `detail_penjualan` */
 
@@ -128,7 +128,7 @@ CREATE TABLE `penjualan` (
 /*Data for the table `penjualan` */
 
 insert  into `penjualan`(`id_penjualan`,`id_user`,`tgl_jual`,`total_penjualan`,`status_penjualan`,`penilaian_pelanggan`) values 
-('NNHK950X',2,'2019-12-23T13:11',60000,'aktif',NULL);
+('NNHK950X',7,'2019-12-23T13:11',60000,'order',NULL);
 
 /*Table structure for table `servis` */
 
@@ -197,6 +197,28 @@ insert  into `teknisi`(`id_teknisi`,`nama`,`alamat`,`no_tlp`) values
 (2,'Dihki Ardhianto','Gunung Kidul','09212212039'),
 (4,'Dwiki Likuisa','Jl. Dr. Wahidin Sudirohusodo','089438492382'),
 (6,'Belum Ada','-','-');
+
+/*Table structure for table `temp_keranjang` */
+
+DROP TABLE IF EXISTS `temp_keranjang`;
+
+CREATE TABLE `temp_keranjang` (
+  `id_keranjang` int(11) NOT NULL AUTO_INCREMENT,
+  `id_user` int(11) DEFAULT NULL,
+  `id_barang` int(11) DEFAULT NULL,
+  `jumlah` int(11) DEFAULT NULL,
+  `sub_total` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_keranjang`),
+  KEY `id_user` (`id_user`),
+  KEY `id_barang` (`id_barang`),
+  CONSTRAINT `temp_keranjang_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `temp_keranjang_ibfk_2` FOREIGN KEY (`id_barang`) REFERENCES `barang` (`id_barang`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+/*Data for the table `temp_keranjang` */
+
+insert  into `temp_keranjang`(`id_keranjang`,`id_user`,`id_barang`,`jumlah`,`sub_total`) values 
+(1,7,10,2,60000);
 
 /*Table structure for table `users` */
 

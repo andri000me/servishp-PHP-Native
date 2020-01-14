@@ -1,7 +1,12 @@
 <?php include_once '../layout/head3.php'; ?>
 <script type="text/javascript">
-  function addKeranjang() {
-    // document.getElementById("jumlah").max = "10";
+  function addKeranjang(jml,harga,nama) {
+    $('aksi').vall('add');
+    $('jumlah').vall('');
+    $('jml').text(jml);
+    $('harga').text(harga);
+    $('nama').text(nama);
+    document.getElementById("jumlah").max = jml;
     $('#modalKeranjang').modal('show');    
   }
 </script>

@@ -21,7 +21,14 @@ if (empty($result)){
 ?>
 <?php include_once '../layout/head3.php'; ?>
 <script type="text/javascript">
-  function addKeranjang() {
+  function addKeranjang(jml,harga,nama,foto) {
+    $('#aksi').val('add');
+    $('#jumlah').val('1');
+    $('#jml').text(jml);
+    $('#harga').text(harga);
+    $('#nama').text(nama);
+    $("#foto").attr("src", foto);
+    document.getElementById("jumlah").max = jml;
     $('#modalKeranjang').modal('show');    
   }
 </script>
@@ -45,7 +52,7 @@ if (empty($result)){
             </div>
           </div><br><br>
           <div class="card-footer">
-            <button class="btn btn-outline-danger" type="button" onclick="addKeranjang();">Masukkan Keranjang</button>
+            <button class="btn btn-outline-danger" type="button" onclick="addKeranjang(<?php echo "'".$result['stok']."','".$result['harga_jual']."','".$result['nama_barang']."','".$result['foto']."'" ?>);">Masukkan Keranjang</button>
             <!-- <button class="btn btn-secondary">Beli Sekarang</button> -->
             <a href="../pengguna"><button class="btn btn-warning"><< Kembali</button></a>
           </div>

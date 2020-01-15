@@ -3,6 +3,18 @@
 	function checkOut() {
 		$('#modalCheckout').modal('show');    
 	}
+	function ubahKeranjang(jml,harga,nama,foto,id_barang,jumlah) {
+    $('#aksi').val('edit');
+    $('#jumlah').val(jumlah);
+    $('#id_barang').val(id_barang);
+    $('#hrg').val(harga);
+    $('#jml').text(jml);
+    $('#harga').text('Rp '+harga);
+    $('#nama').text(nama);
+    $("#foto").attr("src", foto);
+    document.getElementById("jumlah").max = jml;
+    $('#modalKeranjang').modal('show');
+  }
 </script>
 <body>
 	<?php include_once '../layout/navbar3.php'; ?>
@@ -42,7 +54,7 @@
 						<td><?php echo $value['jumlah'] ?></td>
 						<td>Rp <?php echo $value['sub_total'] ?></td>
 						<td nowrap="">
-							<button class="btn btn-sm btn-primary">Edit</button>
+							<button class="btn btn-sm btn-primary" type="button" onclick="addKeranjang(<?php echo "'".$value['stok']."','".$value['harga_jual']."','".$value['nama_barang']."','".$value['foto']."','".$value['id_barang']."'" ?>);">Edit</button>
 							<button class="btn btn-sm btn-warning">Hapus</button>
 						</td>
 					</tr>

@@ -67,7 +67,9 @@
           <div class="col-md-7">
             <input type="hidden" name="id" value="<?php echo $_SESSION['id'] ?>">
             <input type="hidden" name="aksi" id="aksi" value="">
-            <span id="nama" style="font-size: 20px"><strong></strong></span>
+            <input type="hidden" name="id_barang" id="id_barang" value="">
+            <input type="hidden" name="harga" id="hrg" value="">
+            <span id="nama" style="font-size: 20px"><strong></strong></span><br>
             <span id="harga" style="color: red; font-size: 18px"><strong></strong></span><br>
             <medium class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</medium>
             <p class="card-text" style="font-size: 12px">Stok Tersedia : <span id="jml"></span> </p>

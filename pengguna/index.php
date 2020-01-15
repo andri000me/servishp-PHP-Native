@@ -1,10 +1,12 @@
 <?php include_once '../layout/head3.php'; ?>
 <script type="text/javascript">
-  function addKeranjang(jml,harga,nama,foto) {
+  function addKeranjang(jml,harga,nama,foto,id_barang) {
     $('#aksi').val('add');
     $('#jumlah').val('1');
+    $('#id_barang').val(id_barang);
+    $('#hrg').val(harga);
     $('#jml').text(jml);
-    $('#harga').text(harga);
+    $('#harga').text('Rp '+harga);
     $('#nama').text(nama);
     $("#foto").attr("src", foto);
     document.getElementById("jumlah").max = jml;
@@ -66,7 +68,7 @@
                 </div>
                 <div class="card-footer">
                   <a href="detail.php?id=<?php echo $value['id_barang'];?>"><button class="btn btn-outline-primary btn-sm">Detail</button></a>
-                  <button class="btn btn-outline-success btn-sm" type="button" onclick="addKeranjang(<?php echo "'".$value['stok']."','".$value['harga_jual']."','".$value['nama_barang']."','".$value['foto']."'" ?>);">Masukkan Keranjang</button>
+                  <button class="btn btn-outline-success btn-sm" type="button" onclick="addKeranjang(<?php echo "'".$value['stok']."','".$value['harga_jual']."','".$value['nama_barang']."','".$value['foto']."','".$value['id_barang']."'" ?>);">Masukkan Keranjang</button>
                 </div>
               </div>
             </div>

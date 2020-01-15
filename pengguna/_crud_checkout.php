@@ -16,5 +16,5 @@ if (!empty($_POST)) {
 $url = "pembelian.php";
 ?>
 <script type="text/javascript">
-	// document.location = '<?php echo $url ?>';
+	document.location = '<?php echo $url ?>';
 </script>

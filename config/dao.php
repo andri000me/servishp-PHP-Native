@@ -229,6 +229,12 @@ class Dao
 		return $this->execute($sql);
 	}
 
+	public function tambahKeranjang($data)
+	{	
+		$query = "INSERT INTO `temp_keranjang`(`id_user`, `id_barang`, `jumlah`, `sub_total`) VALUES ('$data[0]','$data[1]','$data[2]','$data[3]')";
+		return mysqli_query($this->link->conn, $query);
+	}
+
 	public function execute($query)
 	{
 		$result = mysqli_query($this->link->conn, $query);

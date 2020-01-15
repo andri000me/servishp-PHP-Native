@@ -153,7 +153,7 @@ class Dao
 
 	public function viewKeranjang($id)
 	{	
-		$query = "SELECT nama_barang, foto, harga_jual, `temp_keranjang`.* FROM barang, temp_keranjang WHERE `barang`.id_barang = `temp_keranjang`.id_barang AND id_user = '$id' ORDER BY nama_barang ASC";
+		$query = "SELECT stok,nama_barang, foto, harga_jual, `temp_keranjang`.* FROM barang, temp_keranjang WHERE `barang`.id_barang = `temp_keranjang`.id_barang AND id_user = '$id' ORDER BY nama_barang ASC";
 		return mysqli_query($this->link->conn, $query);	
 	}
 
@@ -234,6 +234,19 @@ class Dao
 		$query = "INSERT INTO `temp_keranjang`(`id_user`, `id_barang`, `jumlah`, `sub_total`) VALUES ('$data[0]','$data[1]','$data[2]','$data[3]')";
 		return mysqli_query($this->link->conn, $query);
 	}
+
+	public function ubahKeranjang($data)
+	{	
+		$query = "UPDATE `temp_keranjang` SET `jumlah`= '$data[1]',`sub_total`= '$data[2]' WHERE `id_keranjang`= '$data[0]'";
+		return mysqli_query($this->link->conn, $query);
+	}
+
+	public function hapusKeranjang($id_keranjang)
+	{	
+		$query = "DELETE FROM `temp_keranjang` WHERE `id_keranjang`= '$id_keranjang'";
+		return mysqli_query($this->link->conn, $query);
+	}
+
 
 	public function execute($query)
 	{

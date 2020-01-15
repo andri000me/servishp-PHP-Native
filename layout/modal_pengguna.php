@@ -67,6 +67,7 @@
           <div class="col-md-7">
             <input type="hidden" name="id" value="<?php echo $_SESSION['id'] ?>">
             <input type="hidden" name="aksi" id="aksi" value="">
+            <input type="hidden" name="id_keranjang" id="id_keranjang" value="">
             <input type="hidden" name="id_barang" id="id_barang" value="">
             <input type="hidden" name="harga" id="hrg" value="">
             <span id="nama" style="font-size: 20px"><strong></strong></span><br>
@@ -87,3 +88,30 @@
 </div>
 </div>
 <!-- end of Modal Keranjang -->
+<!-- Modal Delete Keranjang-->
+<div class="modal fade" id="modalDelKeranjang" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title"><center>Hapus Keranjang</center></h4>
+      </div>
+      <div class="modal-body">
+        <form action="_crud_keranjang.php" method="POST">
+          <div class="row">
+           <div class="col-md-12">
+            <input type="hidden" name="id_keranjang" id="id_del_keranjang">
+            <input type="hidden" name="aksi" id="aksi_del">
+            <h2 style="color: red"><center>Yakin Hapus data ?</center></h2>
+            <center><span style="font-size: 20px; color: blue" id="nama_barang"></span></center>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+        <button type="button" class="btn btn-sm btn-warning" data-dismiss="modal">Tutup</button>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+<!-- end of Modal Delete Supplier

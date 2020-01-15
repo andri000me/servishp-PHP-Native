@@ -11,12 +11,8 @@
             <a class="nav-link" href="../servishp" style="color: white;">Home
             </a>
         </li>
-        <li class="nav-item dropdown">
-            <a style="color: white;" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Services & Pembelian</a>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="servis.php">Servis</a>
-              <a class="dropdown-item" href="pembelian.php">Pembelian</a>
-          </div>
+        <li class="nav-item">
+            <a style="color: white;" class="nav-link" href="servis.php" role="button" aria-haspopup="true" aria-expanded="false">Services</a>
       </li>
     <li class="nav-item">
         <a class="nav-link" href="login.php" style="color: white;">Log In</a>

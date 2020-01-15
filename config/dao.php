@@ -247,6 +247,11 @@ class Dao
 		return mysqli_query($this->link->conn, $query);
 	}
 
+	public function viewKonsul($id)
+	{	
+		$query = "SELECT id_servis, tgl_masuk, gejala, diagnosa, status_servis FROM servis WHERE id_user = '$id' AND status_servis LIKE '%konsul%' ORDER BY tgl_masuk DESC";
+		return mysqli_query($this->link->conn, $query);
+	}
 
 	public function execute($query)
 	{

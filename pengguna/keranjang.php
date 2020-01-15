@@ -25,9 +25,6 @@
 		$('#modalDelKeranjang').modal('show');
 	}
 	
-	
-	
-	
 </script>
 <body>
 	<?php include_once '../layout/navbar3.php'; ?>

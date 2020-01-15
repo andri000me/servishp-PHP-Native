@@ -4,20 +4,7 @@
 <?php include_once '../layout/head.php'; 
 include_once '../config/dao.php';
 $dao = new Dao();
-$cek = true;
-$kode = '';
-while ($cek) {
-    $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $charactersLength = strlen($characters);
-    for ($i = 0; $i < 8; $i++) {
-        $kode .= $characters[rand(0, $charactersLength - 1)];
-    }
-    $result = $dao->execute("SELECT * FROM `servis` WHERE id_servis = '$kode'");
-    if ($result->num_rows == 0) {
-        $cek = false;
-    }
-}
-
+$kode = $dao->generateKode();
 ?>
 <script type="text/javascript">
     function tambahServis(id){

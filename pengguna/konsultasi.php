@@ -5,7 +5,7 @@
 	<!-- Page Content -->
 	<div class="container">
 		<br>
-		<h2><center><strong>Riwayat Servis HP</strong></center></h2>
+		<h2><center><strong>Konsultasi Kerusakan HP</strong></center></h2>
 		<br><br>
 		<button class="btn btn-sm btn-primary" type="button">Ajukan Pertanyaan</button>
 		<br><br>

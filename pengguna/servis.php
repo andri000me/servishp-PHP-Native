@@ -7,12 +7,12 @@
 		<br>
 		<h2><center><strong>Riwayat Servis HP</strong></center></h2>
 		<br><br>
-		<button class="btn btn-sm btn-primary" type="button">Ajukan Pertanyaan</button>
 		<br><br>
 		<table class="table table-striped">
 			<thead>
 				<tr>
 					<td>No</td>
+					<td>Kode Servis</td>
 					<td>Tanggal</td>
 					<td>Gejala</td>
 					<td>Diagnosa</td>
@@ -24,17 +24,18 @@
 				session_start();
 				include_once '../config/dao.php';
 				$dao = new Dao();
-				$result = $dao->viewKonsul($_SESSION['id']);
+				$result = $dao->viewServisHp($_SESSION['id']);
 				$no = 1;
 				foreach ($result as $value) {
 					?>
 					<tr>
 						<td><?php echo $no;$no++; ?></td>
+						<td><?php echo $value['id_servis'] ?></td>
 						<td><?php echo $value['tgl_masuk'] ?></td>
 						<td>Rp <?php echo $value['gejala'] ?></td>
 						<td><?php echo $value['diagnosa'] ?></td>
 						<td nowrap="">
-							<button class="btn btn-sm btn-warning" type="button" onclick="hapusKeranjang(<?php echo "'".$value['nama_barang']."','".$value['id_keranjang']."'"?>)">Hapus</button>
+							<button class="btn btn-sm btn-success" type="button">Detail</button>
 						</td>
 					</tr>
 					<?php

@@ -1,4 +1,15 @@
 <?php include_once '../layout/head3.php'; ?>
+<script type="text/javascript">
+	function addKonsultas() {
+		$('#modalAddPertanyaan').modal('show');
+	}
+
+	function hapusKonsultas(id,nama) {
+		$('#id_del_pertanyaan').val(id);
+		$('#nama_pertanyaan').val(nama)
+		$('#modalDelPertanyaan').modal('show');
+	}
+</script>
 <body>
 	<?php include_once '../layout/navbar3.php'; ?>
 
@@ -7,16 +18,16 @@
 		<br>
 		<h2><center><strong>Konsultasi Kerusakan HP</strong></center></h2>
 		<br><br>
-		<button class="btn btn-sm btn-primary" type="button">Ajukan Pertanyaan</button>
+		<button class="btn btn-sm btn-primary" type="button" onclick="addKonsultas();">Ajukan Pertanyaan</button>
 		<br><br>
 		<table class="table table-striped">
 			<thead>
 				<tr>
-					<td>No</td>
-					<td>Tanggal</td>
-					<td>Gejala</td>
-					<td>Diagnosa</td>
-					<td>Aksi</td>
+					<th>No</th>
+					<th width="120">Tanggal</th>
+					<th width="450">Gejala</th>
+					<th width="450">Diagnosa</th>
+					<th>Aksi</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -31,10 +42,10 @@
 					<tr>
 						<td><?php echo $no;$no++; ?></td>
 						<td><?php echo $value['tgl_masuk'] ?></td>
-						<td>Rp <?php echo $value['gejala'] ?></td>
+						<td style="word-break:break-all;"><?php echo $value['gejala'] ?></td>
 						<td><?php echo $value['diagnosa'] ?></td>
 						<td nowrap="">
-							<button class="btn btn-sm btn-warning" type="button" onclick="hapusKeranjang(<?php echo "'".$value['nama_barang']."','".$value['id_keranjang']."'"?>)">Hapus</button>
+							<button class="btn btn-sm btn-warning" type="button" onclick="hapusKonsultas(<?php echo "'".$value['id_servis']."','".$value['gejala']."'"?>)">Hapus</button>
 						</td>
 					</tr>
 					<?php

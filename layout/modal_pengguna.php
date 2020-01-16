@@ -114,4 +114,63 @@
   </div>
 </div>
 </div>
-<!-- end of Modal Delete Supplier
+<!-- end of Modal Delete Supplier-->
+<!-- Modal Add Pertanyaan-->
+<div class="modal fade" id="modalAddPertanyaan" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title"><center>Ajukan Pertanyaan</center></h4>
+      </div>
+      <div class="modal-body">
+        <form action="_crud_konsultasi.php" method="POST">
+          <div class="row">
+           <div class="col-md-12">
+            <input type="hidden" name="id" value="<?php echo $_SESSION['id']?>">
+            <input type="hidden" name="aksi" value="add">
+            <label>Gejala Kerusakan</label>
+            <textarea class="form-control" rows="10" style="resize: none;" name="gejala"></textarea>
+            <p align="justify" style="font-size: 12px"><i><sup>*</sup>Note : Balasan diagnosa kerusakan atas pertanyaan yang anda ajukan akan diterima setelah admin/teknisi membaca pertanyaan anda</i></p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-sm btn-danger">Simpan</button>
+        <button type="button" class="btn btn-sm btn-warning" data-dismiss="modal">Tutup</button>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+<!-- end of Add Pertanyaan -->
+<!-- Modal Delete Pertanyaan-->
+<div class="modal fade" id="modalDelPertanyaan" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title"><center>Hapus Pertanyaan</center></h4>
+      </div>
+      <div class="modal-body">
+        <form action="_crud_konsultasi.php" method="POST">
+          <div class="row">
+           <div class="col-md-12">
+            <input type="hidden" name="id_pertanyaan" id="id_del_pertanyaan">
+            <input type="hidden" name="aksi" value="delete">
+            <h2 style="color: red"><center>Yakin Hapus pertanyaan ?</center></h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <textarea readonly="yes" style="resize: none" rows="20" class="form-control" id="nama_pertanyaan" ></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+        <button type="button" class="btn btn-sm btn-warning" data-dismiss="modal">Tutup</button>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+<!-- end of Modal Delete Pertanyaan-->

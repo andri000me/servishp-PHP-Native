@@ -211,6 +211,24 @@ class Dao
 		return $kode;
 	}
 
+	public function generateKodeServis()
+	{
+		$cek = true;
+		$kode = '';
+		while ($cek) {
+			$characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+			$charactersLength = strlen($characters);
+			for ($i = 0; $i < 8; $i++) {
+				$kode .= $characters[rand(0, $charactersLength - 1)];
+			}
+			$result = $this->execute("SELECT * FROM `servis` WHERE id_servis = '$kode'");
+			if ($result->num_rows == 0) {
+				$cek = false;
+			}
+		}
+		return $kode;
+	}
+
 	public function prosesCheckout($id)
 	{
 		$kode = $this->generateKode();
@@ -250,6 +268,26 @@ class Dao
 	public function viewKonsul($id)
 	{	
 		$query = "SELECT id_servis, tgl_masuk, gejala, diagnosa, status_servis FROM servis WHERE id_user = '$id' AND status_servis LIKE '%konsul%' ORDER BY tgl_masuk DESC";
+		return mysqli_query($this->link->conn, $query);
+	}
+
+	public function viewServisHp($id)
+	{	
+		$query = "SELECT * FROM servis WHERE `status_servis` IN ('aktif','selesai') AND id_user = '$id' ORDER BY tgl_masuk DESC";
+		return mysqli_query($this->link->conn, $query);
+	}
+
+	public function tambahKonsultasi($data)
+	{	
+		$kode = $this->generateKodeServis();
+		$now = date("Y-m-d");
+		$query = "INSERT INTO `servis`(`id_servis`,`id_user`,`gejala`, `id_teknisi`,`tgl_masuk`,`status_servis`) VALUES ('$kode','$data[0]','$data[1]','$data[2]','$now','konsul-baru')";
+		return mysqli_query($this->link->conn, $query);
+	}
+	
+	public function hapusKonsultasi($id)
+	{	
+		$query = "DELETE FROM `servis` WHERE `id_servis`= '$id'";
 		return mysqli_query($this->link->conn, $query);
 	}
 

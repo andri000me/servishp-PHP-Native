@@ -4,7 +4,7 @@
 <?php include_once '../layout/head.php'; 
 include_once '../config/dao.php';
 $dao = new Dao();
-$kode = $dao->generateKode();
+$kode = $dao->generateKodeServis();
 
 ?>
 <script type="text/javascript">

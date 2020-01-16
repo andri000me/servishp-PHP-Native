@@ -79,6 +79,8 @@
        <label>Status Servis</label>
         <select class="form-control" id="status_servis" name="status_servis">
           <option value="aktif">Aktif</option>
+          <option value="konsul-baru">Konsultasi Baru</option>
+          <option value="konsul-terjawab">Konsultasi Terjawab</option>
           <option value="proses">Proses</option>
           <option value="selesai">Selesai</option>
           <option value="batal">Batal</option>

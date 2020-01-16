@@ -3,17 +3,6 @@
 include_once '../config/dao.php';
 $dao = new Dao();
 $pesan = null;
-
-
-
-
-
-
-
-
-
-
-
 if (isset($_POST['aksi_servis'])) {
 	if ($_POST['aksi_servis'] == 'tambah') {
 		$id_servis = $_POST['id_servis'];

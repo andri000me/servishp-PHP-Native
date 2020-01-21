@@ -36,11 +36,15 @@
     <script src="../js/demo.js"></script>
     
     <!-- Jquery DataTable Plugin Js -->
-    <!-- <script type="text/javascript" src="../plugins/jquery-datatable/jquery-3.3.1.js"></script> -->
+    <script type="text/javascript" src="../plugins/jquery-datatable/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="../plugins/jquery-datatable/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="../plugins/jquery-datatable/dataTables.bootstrap4.min.js"></script>
 
     <!-- Custom Js -->
     <script src="../js/admin.js"></script>
     <script src="../js/pages/index.js"></script>
-
+    <script>
+        $(document).ready(function() {
+            $('#listdata').DataTable();
+        } );
+    </script>

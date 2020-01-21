@@ -53,7 +53,7 @@
                         </div>
                         <div class="body">
                             <div class="table-responsive">
-                                <table class="table table-bordered table-striped table-hover js-basic-example dataTable" id="pengguna">
+                                <table class="table table-bordered table-striped table-hover js-basic-example dataTable" id="listdata">
                                     <thead style="background-color:#ff4500; color: white;">
                                         <tr>
                                             <th><center>No</center></th>
@@ -93,10 +93,5 @@
         </div>
     </section>
     <?php include_once '../layout/js.php'; ?>
-    <script>
-        $(document).ready(function() {
-            $('#supplier').DataTable();
-        } );
-    </script>
 </body>
 </html>

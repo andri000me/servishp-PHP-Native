@@ -4,9 +4,10 @@
 		$('#modalAddPertanyaan').modal('show');
 	}
 
-	function hapusKonsultas(id,nama) {
+	function hapusKonsultas(id,nama,diagnosa) {
 		$('#id_del_pertanyaan').val(id);
 		$('#nama_pertanyaan').val(nama)
+		$('#nama_diagnosa').val(diagnosa);
 		$('#modalDelPertanyaan').modal('show');
 	}
 </script>
@@ -45,7 +46,7 @@
 						<td style="word-break:break-all;"><?php echo $value['gejala'] ?></td>
 						<td><?php echo $value['diagnosa'] ?></td>
 						<td nowrap="">
-							<button class="btn btn-sm btn-warning" type="button" onclick="hapusKonsultas(<?php echo "'".$value['id_servis']."','".$value['gejala']."'"?>)">Hapus</button>
+							<button class="btn btn-sm btn-warning" type="button" onclick="hapusKonsultas(<?php echo "'".$value['id_servis']."','".$value['gejala']."','".$value['diagnosa']."'"; ?>)">Hapus</button>
 						</td>
 					</tr>
 					<?php

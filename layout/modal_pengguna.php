@@ -161,7 +161,12 @@
         </div>
         <div class="row">
           <div class="col-md-12">
-            <textarea readonly="yes" style="resize: none" rows="20" class="form-control" id="nama_pertanyaan" ></textarea>
+            <label>Gejala</label>
+            <textarea readonly="yes" style="resize: none" rows="10" class="form-control" id="nama_pertanyaan" ></textarea>
+          </div>
+          <div class="col-md-12">
+            <label>Diagnosa</label>
+            <textarea readonly="yes" style="resize: none" rows="10" class="form-control" id="nama_diagnosa" ></textarea>
           </div>
         </div>
       </div>

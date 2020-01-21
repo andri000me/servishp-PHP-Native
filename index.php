@@ -36,7 +36,7 @@
           <?php 
           include_once 'config/dao.php';
           $dao = new Dao();
-          $result = $dao->view('barang');
+          $result = $dao->viewBarang();
           // $result = $result->fetch_array();
           // echo '<pre>',print_r($result),'</pre>';
           foreach ($result as $value) {

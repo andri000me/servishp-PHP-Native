@@ -16,6 +16,12 @@ class Dao
 		return mysqli_query($this->link->conn, $query);
 	}
 
+	public function viewBarang()
+	{	
+		$query = "SELECT barang.* FROM barang, pembelian WHERE `barang`.id_pembelian = `pembelian`.id_pembelian AND id_supplier <> '4'";
+		return mysqli_query($this->link->conn, $query);	
+	}
+
 	public function view($tabel)
 	{	
 		$query = "SELECT * FROM $tabel";
@@ -64,9 +70,9 @@ class Dao
 		return mysqli_query($this->link->conn, $query);	
 	}
 
-	public function viewServis()
+	public function viewServis($status)
 	{	
-		$query = "SELECT servis.*, `teknisi`.nama as nama_teknisi, `users`.nama as nama_user FROM `users`, teknisi, servis WHERE `users`.id_user = `servis`.id_user AND `teknisi`.id_teknisi = `servis`.id_teknisi ORDER BY tgl_masuk DESC";
+		$query = "SELECT servis.*, `teknisi`.nama as nama_teknisi, `users`.nama as nama_user FROM `users`, teknisi, servis WHERE status_servis IN ($status) AND `users`.id_user = `servis`.id_user AND `teknisi`.id_teknisi = `servis`.id_teknisi  ORDER BY tgl_masuk DESC";
 		return mysqli_query($this->link->conn, $query);	
 	}
 
@@ -90,7 +96,7 @@ class Dao
 
 	public function viewPenilaian($tabel,$tgl)
 	{	
-		$query = "SELECT $tgl as tgl, `users`.nama, penilaian_pelanggan FROM `users`, $tabel WHERE `$tabel`.id_user = `users`.id_user ORDER BY $tgl DESC";
+		$query = "SELECT $tgl as tgl, `users`.nama, penilaian_pelanggan FROM `users`, $tabel WHERE `$tabel`.id_user = `users`.id_user AND penilaian_pelanggan <> '' ORDER BY $tgl DESC";
 		return mysqli_query($this->link->conn, $query);	
 	}
 

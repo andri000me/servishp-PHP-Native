@@ -16,6 +16,9 @@
 					<td>Tanggal</td>
 					<td>Gejala</td>
 					<td>Diagnosa</td>
+					<td>Total Biaya</td>
+					<td>Status Servis</td>
+					<td>Status Bayar</td>
 					<td>Aksi</td>
 				</tr>
 			</thead>
@@ -32,10 +35,13 @@
 						<td><?php echo $no;$no++; ?></td>
 						<td><?php echo $value['id_servis'] ?></td>
 						<td><?php echo $value['tgl_masuk'] ?></td>
-						<td>Rp <?php echo $value['gejala'] ?></td>
+						<td><?php echo $value['gejala'] ?></td>
 						<td><?php echo $value['diagnosa'] ?></td>
+						<td><?php echo $value['total_biaya'] ?></td>
+						<td><?php echo $value['status_servis'] ?></td>
+						<td><?php echo $value['status_bayar'] ?></td>
 						<td nowrap="">
-							<button class="btn btn-sm btn-success" type="button">Detail</button>
+							<a href="det_servis.php?id=<?php echo $value['id_servis']; ?>"><button class="btn btn-sm btn-success" type="button">Detail</button></a>
 						</td>
 					</tr>
 					<?php

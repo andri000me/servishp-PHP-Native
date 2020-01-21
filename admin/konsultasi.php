@@ -26,24 +26,20 @@ $kode = $dao->generateKode();
         $('#modalServis').modal('show');   
     }
 
-    function ubahServis(id,tgl_masuk,nama_pelanggan,nama_teknisi,gejala,diagnosa,kelengkapan,tgl_selesai,total_biaya,status_servis,status_pembayaran,aksi){
-        $('#id_servis').val(id);
-        $('#aksi_servis').val('ubah');
-        $('#tgl_masuk').val(tgl_masuk);
-        $('#nama_pelanggan').val(nama_pelanggan);
-        $('#nama_teknisi').val(nama_teknisi);
-        $('#gejala').val(gejala);
-        $('#diagnosa').val(diagnosa);
-        $('#kelengkapan').val(kelengkapan);
-        $('#tgl_selesai').val(tgl_selesai);
-        $('#total_biaya').val(total_biaya);
-        $('#status_servis').val(status_servis);
-        $('#status_pembayaran').val(status_pembayaran);
-        document.getElementById('id_servis').readOnly = true;
-        document.getElementById('total_biaya').readOnly = true;
-        document.getElementById('tombol_servis1').style.visibility = aksi;
-        $('#tombol_servis').text('Ubah');
-        $('#modalServis').modal('show');   
+    function ubahServis(id,tgl_masuk,nama_pelanggan,gejala,diagnosa){
+        $('#id_servis1').val(id);
+        $('#aksi_servis1').val('ubah_konsul');
+        $('#tgl_masuk1').val(tgl_masuk);
+        $('#nama_pelanggan1').val(nama_pelanggan);
+        $('#gejala1').val(gejala);
+        $('#diagnosa1').val(diagnosa);
+        document.getElementById('id_servis1').readOnly = true;
+        document.getElementById('tgl_masuk1').readOnly = true;
+        $('#nama_pelanggan1').prop('disabled', true);
+        $('#pindah').prop('checked', false);
+        document.getElementById('gejala1').readOnly = true;
+        $('#tombol_konsul').text('Proses');
+        $('#modalKonsultasi').modal('show');   
     }
 
     function hapusServis(id,nm) {
@@ -108,7 +104,7 @@ $kode = $dao->generateKode();
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
-                            <span style="font-size: 25px"><center>DATA SERVIS</center></span>
+                            <span style="font-size: 25px"><center>DATA KONSULTASI</center></span>
                             <button type="button" class="btn bg-blue btn-circle-lg waves-effect waves-circle waves-float waves-light" title="Tambah Data" onclick="tambahServis('<?php echo $kode ?>');">
                                 <i class="material-icons">playlist_add</i>
                             </button>
@@ -124,26 +120,17 @@ $kode = $dao->generateKode();
                                     <div class="col-md-2">
                                         <select id="status_servis" name="status_servis" class="form-control col-md-2">
                                             <?php 
-                                            if (empty($_GET['status_servis']) || $_GET['status_servis'] == 'aktif') {
+                                            if (empty($_GET['status_servis']) || $_GET['status_servis'] == 'konsul-baru') {
                                                 ?>
-                                                <option value="aktif">Aktif</option>
-                                                <option value="proses">Proses</option>
-                                                <option value="selesai">Selesai</option>
-                                                <?php
-                                            }
-                                            elseif($_GET['status_servis'] == 'proses'){
-                                                ?>
-                                                <option value="proses">Proses</option>
-                                                <option value="aktif">Aktif</option>
-                                                <option value="selesai">Selesai</option>
+                                                <option value="konsul-baru">Baru</option>
+                                                <option value="konsul-terjawab">Terjawab</option>
                                                 <?php
                                             }
                                             else{
                                                 ?>
-                                                <option value="selesai">Selesai</option>
-                                                <option value="aktif">Aktif</option>
-                                                <option value="proses">Proses</option>
-                                                <?php
+                                                <option value="konsul-baru">Baru</option>
+                                                <option value="konsul-terjawab">Terjawab</option>
+                                                <?php 
                                             }
                                             ?>
                                         </select>
@@ -160,46 +147,34 @@ $kode = $dao->generateKode();
                                     <thead style="background-color:#ff4500; color: white;">
                                         <tr>
                                             <th><center>No</center></th>
-                                            <th><center>Kode Servis</center></th>
                                             <th><center>Tanggal Masuk</center></th>
                                             <th><center>Nama Pelanggan</center></th>
-                                            <th><center>Teknisi</center></th>
                                             <th><center>Gejala</center></th>
-                                            <th><center>Status Servis</center></th>
+                                            <th><center>Diagnosa</center></th>
                                             <th><center>Aksi</center></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                                        if (empty($_GET['status_servis']) || $_GET['status_servis'] == 'aktif') {
-                                            $result = $dao->viewServis("'aktif'");
-                                        }
-                                        elseif($_GET['status_servis'] == 'proses') {
-                                            $result = $dao->viewServis("'proses'");
+                                        if (empty($_GET['status_servis']) || $_GET['status_servis'] == 'konsul-baru') {
+                                            $result = $dao->viewServis("'konsul-baru'");
                                         }
                                         else{
-                                            $result = $dao->viewServis("'selesai'");
+                                            $result = $dao->viewServis("'konsul-terjawab'");
                                         }
+                                        
                                         $no = 1;
                                         foreach ($result as $value){
                                             ?>
                                             <tr>
                                                 <td><?php echo $no; $no++; ?></td>
-                                                <td><?php echo $value['id_servis'] ?></td>
                                                 <td><?php echo $value['tgl_masuk'];?></td>
                                                 <td><?php echo $value['nama_user'] ?></td>
-                                                <td><?php echo $value['nama_teknisi'] ?></td>
                                                 <td><?php echo $value['gejala'] ?></td>
-                                                <td><?php echo $value['status_servis'] ?></td>
+                                                <td><?php echo $value['diagnosa'] ?></td>
                                                 <td nowrap="">
                                                     <center>
-                                                        <a href="det_servis.php?id=<?php echo $value['id_servis']; ?>"><button type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float waves-light" title="Detail Servis">
-                                                            <i class="material-icons">subject</i>
-                                                        </button></a>
-                                                        <button type="button" class="btn bg-blue btn-circle waves-effect waves-circle waves-float waves-light" title="Info Servis" onclick="ubahServis('<?php echo $value['id_servis']."','".$value['tgl_masuk']."','".$value['id_user']."','".$value['id_teknisi']."','".$value['gejala']."','".$value['diagnosa']."','".$value['kelengkapan']."','".$value['tgl_selesai']."','".$value['total_biaya']."','".$value['status_servis']."','".$value['status_bayar']."','hidden'" ?>)">
-                                                            <i class="material-icons">help_outline</i>
-                                                        </button>
-                                                        <button type="button" class="btn bg-orange btn-circle waves-effect waves-circle waves-float waves-light" title="Edit Data" onclick="ubahServis('<?php echo $value['id_servis']."','".$value['tgl_masuk']."','".$value['id_user']."','".$value['id_teknisi']."','".$value['gejala']."','".$value['diagnosa']."','".$value['kelengkapan']."','".$value['tgl_selesai']."','".$value['total_biaya']."','".$value['status_servis']."','".$value['status_bayar']."','visible'" ?>)">
+                                                        <button type="button" class="btn bg-orange btn-circle waves-effect waves-circle waves-float waves-light" title="Edit Data" onclick="ubahServis('<?php echo $value['id_servis']."','".$value['tgl_masuk']."','".$value['id_user']."','".$value['gejala']."','".$value['diagnosa']."'" ?>)">
                                                             <i class="material-icons">mode_edit</i>
                                                         </button>
                                                         <button type="button" class="btn bg-red btn-circle waves-effect waves-circle waves-float waves-light" title="Hapus Data" onclick="hapusServis('<?php echo $value['id_servis']."','".$value['nama_user']; ?>');">

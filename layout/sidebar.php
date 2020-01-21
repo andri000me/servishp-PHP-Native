@@ -85,10 +85,20 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="servis.php">
+                    <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">build</i>
-                        <span>Data Servis</span>
+                        <span>Data Konsultasi & Servis</span>
                     </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <li>
+                                <a href="konsultasi.php">Data Konsultasi</a>
+                            </li>
+                            <li>
+                                <a href="servis.php">Data Servis</a>
+                            </li>
+                        </li>
+                    </ul>
                 </li>
                 <li class="">
                     <a href="penilaian.php">

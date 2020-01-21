@@ -1,4 +1,5 @@
     <!-- Jquery Core Js -->
+    <!-- <script type="text/javascript" src="../plugins/jquery-datatable/jquery-3.3.1.js"></script> -->
     <script src="../plugins/jquery/jquery-2.2.4.min.js"></script>
 
     <!-- Bootstrap Core Js -->
@@ -36,7 +37,6 @@
     <script src="../js/demo.js"></script>
     
     <!-- Jquery DataTable Plugin Js -->
-    <script type="text/javascript" src="../plugins/jquery-datatable/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="../plugins/jquery-datatable/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="../plugins/jquery-datatable/dataTables.bootstrap4.min.js"></script>
 

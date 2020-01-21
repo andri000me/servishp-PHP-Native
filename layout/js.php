@@ -1,5 +1,10 @@
     <!-- Jquery Core Js -->
-    <!-- <script type="text/javascript" src="../plugins/jquery-datatable/jquery-3.3.1.js"></script> -->
+    <script type="text/javascript" src="../plugins/jquery-datatable/jquery-3.3.1.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#listdata').DataTable();
+        } );
+    </script>
     <script src="../plugins/jquery/jquery-2.2.4.min.js"></script>
 
     <!-- Bootstrap Core Js -->
@@ -43,8 +48,4 @@
     <!-- Custom Js -->
     <script src="../js/admin.js"></script>
     <script src="../js/pages/index.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#listdata').DataTable();
-        } );
-    </script>
+    

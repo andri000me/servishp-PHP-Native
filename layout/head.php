@@ -47,6 +47,5 @@ if ($_SESSION['level'] != "admin" || empty($_SESSION['level'])) {
     
     <!-- JQuery DataTable Css -->
     <link href="../plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css"> -->
     
 </head>

@@ -24,9 +24,9 @@
                                             <i class="material-icons">person_add</i>
                                         </div>
                                         <div class="menu-info">
-                                            <h4>12 new members joined</h4>
+                                            <h4><span id="notif-penjualan">2</span> Pemesanan Baru</h4>
                                             <p>
-                                                <i class="material-icons">access_time</i> 14 mins ago
+                                                <i class="material-icons">access_time</i> Beberapa waktu lalu
                                             </p>
                                         </div>
                                     </a>
@@ -34,7 +34,7 @@
                             </ul>
                         </li>
                         <li class="footer">
-                            <a href="javascript:void(0);">View All Notifications</a>
+                            <a href="pembelian.php">Lihat Semua Pemesanan Baru</a>
                         </li>
                     </ul>
                 </li>
@@ -50,14 +50,27 @@
                         <li class="body">
                             <ul class="menu">
                                 <li>
-                                    <a href="javascript:void(0);">
+                                    <a href="#">
                                         <div class="icon-circle bg-light-green">
                                             <i class="material-icons">person_add</i>
                                         </div>
                                         <div class="menu-info">
-                                            <h4>12 new members joined</h4>
+                                            <h4><span id="notif-servis">2</span> Servis Baru</h4>
                                             <p>
-                                                <i class="material-icons">access_time</i> 14 mins ago
+                                                <i class="material-icons">access_time</i> Beberapa waktu lalu
+                                            </p>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="icon-circle bg-light-green">
+                                            <i class="material-icons">person_add</i>
+                                        </div>
+                                        <div class="menu-info">
+                                            <h4><span id="notif-servis">2</span> Konsultasi Baru</h4>
+                                            <p>
+                                                <i class="material-icons">access_time</i> Beberapa waktu lalu
                                             </p>
                                         </div>
                                     </a>
@@ -65,7 +78,7 @@
                             </ul>
                         </li>
                         <li class="footer">
-                            <a href="javascript:void(0);">View All Tasks</a>
+                            <a href="servis.php">Lihat Semua Servis Baru</a>
                         </li>
                     </ul>
                 </li>

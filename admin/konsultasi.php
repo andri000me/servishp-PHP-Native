@@ -108,9 +108,9 @@ $kode = $dao->generateKode();
                             <button type="button" class="btn bg-blue btn-circle-lg waves-effect waves-circle waves-float waves-light" title="Tambah Data" onclick="tambahServis('<?php echo $kode ?>');">
                                 <i class="material-icons">playlist_add</i>
                             </button>
-                            <a href="_cetak_servis.php" target="_blank"><button type="button" class="btn bg-black btn-circle-lg waves-effect waves-circle waves-float waves-light" title="Cetak Data">
-                                <i class="material-icons">local_printshop</i>
-                            </button></a>
+                            <!-- <a href="_cetak_servis.php" target="_blank"><button type="button" class="btn bg-black btn-circle-lg waves-effect waves-circle waves-float waves-light" title="Cetak Data"> -->
+                                <!-- <i class="material-icons">local_printshop</i> -->
+                            <!-- </button></a> -->
                             <br><br>
                             <form>
                                 <div class="row">

@@ -48,7 +48,7 @@ if (isset($_POST['aksi_servis'])) {
 	}
 	elseif ($_POST['aksi_servis'] == 'hapus' && !empty($_POST['id_servis'])) {
 		$id_servis = $_POST['id_servis'];
-	
+
 		$result = $dao->viewDetservis($id_servis);
 		foreach ($result as $value) {
 			$id_brg = $value['id_barang'];
@@ -64,8 +64,32 @@ if (isset($_POST['aksi_servis'])) {
 			$pesan = "?pesan=bg-red,Gagal, Data Gagal dihapus!";
 		}
 	}
+	elseif ($_POST['aksi_servis'] == 'ubah_konsul' && !empty($_POST['id_servis'])) {
+		// var_dump($_POST);die;
+		$id_servis = $_POST['id_servis'];
+		$diagnosa = $_POST['diagnosa'];
+		if (empty($_POST['pindah'])) {
+			$status = 'konsul-terjawab';
+		}
+		else{
+			$status = $_POST['pindah'];
+		}
+
+		$query = "UPDATE `servis` SET `diagnosa`='$diagnosa',`status_servis`='$status' WHERE id_servis = '$id_servis'";
+		if ($dao->execute($query)) {
+			$pesan = "?pesan=bg-orange,Sukses, Data berhasil diubah.";
+		}
+		else{
+			$pesan = "?pesan=bg-red,Gagal, Data Gagal diubah!";
+		}
+	}
 }
-$url = "servis.php".$pesan;
+if ($_POST['aksi_servis'] == 'ubah_konsul') {
+	$url = "konsultasi.php".$pesan;
+}
+else{
+	$url = "servis.php".$pesan;
+}
 ?>
 <script type="text/javascript">
 	document.location = '<?php echo $url ?>';

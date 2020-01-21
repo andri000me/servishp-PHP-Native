@@ -297,6 +297,18 @@ class Dao
 		return mysqli_query($this->link->conn, $query);
 	}
 
+	public function notifServis($status)
+	{	
+		$query = "SELECT count(*) as jml FROM servis WHERE status_servis = '$status'";
+		return mysqli_query($this->link->conn, $query);
+	}
+
+	public function notifPenjualan()
+	{	
+		$query = "SELECT count(*) as jml FROM penjualan WHERE status_penjualan = 'aktif'";
+		return mysqli_query($this->link->conn, $query);
+	}
+
 	public function execute($query)
 	{
 		$result = mysqli_query($this->link->conn, $query);

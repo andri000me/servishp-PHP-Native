@@ -273,7 +273,7 @@ class Dao
 
 	public function viewKonsul($id)
 	{	
-		$query = "SELECT id_servis, tgl_masuk, gejala, diagnosa, status_servis FROM servis WHERE id_user = '$id' AND status_servis LIKE '%konsul%' ORDER BY tgl_masuk DESC";
+		$query = "SELECT * FROM servis WHERE id_user = '$id' AND status_servis LIKE '%konsul%' ORDER BY tgl_masuk DESC";
 		return mysqli_query($this->link->conn, $query);
 	}
 
@@ -287,7 +287,7 @@ class Dao
 	{	
 		$kode = $this->generateKodeServis();
 		$now = date("Y-m-d");
-		$query = "INSERT INTO `servis`(`id_servis`,`id_user`,`gejala`, `id_teknisi`,`tgl_masuk`,`status_servis`) VALUES ('$kode','$data[0]','$data[1]','$data[2]','$now','konsul-baru')";
+		$query = "INSERT INTO `servis`(`id_servis`,`id_user`,`tipe_hp`,`gejala`, `id_teknisi`,`tgl_masuk`,`status_servis`) VALUES ('$kode','$data[0]','$data[1]','$data[2]','$data[3]','$now','konsul-baru')";
 		return mysqli_query($this->link->conn, $query);
 	}
 	

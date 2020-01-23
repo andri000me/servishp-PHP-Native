@@ -7,36 +7,17 @@ $dao = new Dao();
 $kode = $dao->generateKode();
 ?>
 <script type="text/javascript">
-    function tambahServis(id){
-        $('#id_servis').val(id);
-        $('#aksi_servis').val('tambah');
-        $('#tgl_masuk').val('');
-        $('#nama_pelanggan').val('0');
-        $('#nama_teknisi').val('0');
-        $('#gejala').val('');
-        $('#diagnosa').val('');
-        $('#kelengkapan').val('');
-        $('#tgl_selesai').val('');
-        $('#total_biaya').val('0');
-        $('#status_servis').val('aktif');
-        $('#status_pembayaran').val('Belum Lunas');
-        document.getElementById('id_servis').readOnly = true;
-        document.getElementById('total_biaya').readOnly = true
-        $('#tombol_servis').text('Simpan');
-        $('#modalServis').modal('show');   
-    }
-
-    function ubahServis(id,tgl_masuk,nama_pelanggan,gejala,diagnosa){
+    function ubahServis(id,tgl_masuk,nama_pelanggan,gejala,diagnosa,tipe_hp){
         $('#id_servis1').val(id);
         $('#aksi_servis1').val('ubah_konsul');
         $('#tgl_masuk1').val(tgl_masuk);
         $('#nama_pelanggan1').val(nama_pelanggan);
         $('#gejala1').val(gejala);
+        $('#tipe_hp1').val(tipe_hp);
         $('#diagnosa1').val(diagnosa);
         document.getElementById('id_servis1').readOnly = true;
         document.getElementById('tgl_masuk1').readOnly = true;
         $('#nama_pelanggan1').prop('disabled', true);
-        $('#pindah').prop('checked', false);
         document.getElementById('gejala1').readOnly = true;
         $('#tombol_konsul').text('Proses');
         $('#modalKonsultasi').modal('show');   
@@ -105,9 +86,9 @@ $kode = $dao->generateKode();
                     <div class="card">
                         <div class="header">
                             <span style="font-size: 25px"><center>DATA KONSULTASI</center></span>
-                            <button type="button" class="btn bg-blue btn-circle-lg waves-effect waves-circle waves-float waves-light" title="Tambah Data" onclick="tambahServis('<?php echo $kode ?>');">
-                                <i class="material-icons">playlist_add</i>
-                            </button>
+                            <!-- <button type="button" class="btn bg-blue btn-circle-lg waves-effect waves-circle waves-float waves-light" title="Tambah Data" onclick="tambahServis('<?php echo $kode ?>');"> -->
+                                <!-- <i class="material-icons">playlist_add</i> -->
+                            <!-- </button> -->
                             <!-- <a href="_cetak_servis.php" target="_blank"><button type="button" class="btn bg-black btn-circle-lg waves-effect waves-circle waves-float waves-light" title="Cetak Data"> -->
                                 <!-- <i class="material-icons">local_printshop</i> -->
                             <!-- </button></a> -->
@@ -149,6 +130,7 @@ $kode = $dao->generateKode();
                                             <th><center>No</center></th>
                                             <th><center>Tanggal Masuk</center></th>
                                             <th><center>Nama Pelanggan</center></th>
+                                            <th><center>Merk/Tipe HP</center></th>
                                             <th><center>Gejala</center></th>
                                             <th><center>Diagnosa</center></th>
                                             <th><center>Aksi</center></th>
@@ -170,11 +152,12 @@ $kode = $dao->generateKode();
                                                 <td><?php echo $no; $no++; ?></td>
                                                 <td><?php echo $value['tgl_masuk'];?></td>
                                                 <td><?php echo $value['nama_user'] ?></td>
+                                                <td><?php echo $value['tipe_hp'] ?></td>
                                                 <td><?php echo $value['gejala'] ?></td>
                                                 <td><?php echo $value['diagnosa'] ?></td>
                                                 <td nowrap="">
                                                     <center>
-                                                        <button type="button" class="btn bg-orange btn-circle waves-effect waves-circle waves-float waves-light" title="Edit Data" onclick="ubahServis('<?php echo $value['id_servis']."','".$value['tgl_masuk']."','".$value['id_user']."','".$value['gejala']."','".$value['diagnosa']."'" ?>)">
+                                                        <button type="button" class="btn bg-orange btn-circle waves-effect waves-circle waves-float waves-light" title="Edit Data" onclick="ubahServis('<?php echo $value['id_servis']."','".$value['tgl_masuk']."','".$value['id_user']."','".$value['gejala']."','".$value['diagnosa']."','".$value['tipe_hp']."'" ?>)">
                                                             <i class="material-icons">mode_edit</i>
                                                         </button>
                                                         <button type="button" class="btn bg-red btn-circle waves-effect waves-circle waves-float waves-light" title="Hapus Data" onclick="hapusServis('<?php echo $value['id_servis']."','".$value['nama_user']; ?>');">

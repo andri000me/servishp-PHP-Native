@@ -4,11 +4,14 @@ $dao = new Dao();
 
 if (!empty($_POST['aksi'])) {
 	if ($_POST['aksi'] == 'add' && !empty($_POST['id'])) {
-		$data = array($_POST['id'],$_POST['gejala'],'6');
+		$data = array($_POST['id'],$_POST['tipe_hp'],$_POST['gejala'],'6');
 		$dao->tambahKonsultasi($data);
 	}
 	elseif ($_POST['aksi'] == 'delete' && !empty($_POST['id_pertanyaan'])) {
 		$dao->hapusKonsultasi($_POST['id_pertanyaan']);
+	}
+	elseif ($_POST['aksi'] == 'add_servis' && !empty($_POST['id']){
+
 	}
 }
 $url = "konsultasi.php";

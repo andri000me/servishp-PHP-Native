@@ -128,6 +128,12 @@
            <div class="col-md-12">
             <input type="hidden" name="id" value="<?php echo $_SESSION['id']?>">
             <input type="hidden" name="aksi" value="add">
+            <label>Merk/Tipe HP</label>
+            <input type="text" name="tipe_hp" id="tipe_hp" class="form-control">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
             <label>Gejala Kerusakan</label>
             <textarea class="form-control" rows="10" style="resize: none;" name="gejala"></textarea>
             <p align="justify" style="font-size: 12px"><i><sup>*</sup>Note : Balasan diagnosa kerusakan atas pertanyaan yang anda ajukan akan diterima setelah admin/teknisi membaca pertanyaan anda</i></p>
@@ -161,12 +167,14 @@
         </div>
         <div class="row">
           <div class="col-md-12">
+            <label>Merk/Tipe HP</label>
+            <input type="text" name="tipe_hp" id="tipe_hp1" class="form-control" readonly="yes">
             <label>Gejala</label>
-            <textarea readonly="yes" style="resize: none" rows="10" class="form-control" id="nama_pertanyaan" ></textarea>
+            <textarea readonly="yes" style="resize: none" rows="5" class="form-control" id="nama_pertanyaan" ></textarea>
           </div>
           <div class="col-md-12">
             <label>Diagnosa</label>
-            <textarea readonly="yes" style="resize: none" rows="10" class="form-control" id="nama_diagnosa" ></textarea>
+            <textarea readonly="yes" style="resize: none" rows="5" class="form-control" id="nama_diagnosa" ></textarea>
           </div>
         </div>
       </div>
@@ -179,3 +187,39 @@
 </div>
 </div>
 <!-- end of Modal Delete Pertanyaan-->
+<!-- Modal Add Servis-->
+<div class="modal fade" id="modalAddServis" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title"><center>Lanjutkan Servis</center></h4>
+      </div>
+      <div class="modal-body">
+        <form action="_crud_konsultasi.php" method="POST">
+          <div class="row">
+           <div class="col-md-12">
+            <input type="hidden" name="id" value="<?php echo $_SESSION['id']?>">
+            <input type="hidden" name="id_servis" id="id_servis">
+            <input type="hidden" name="aksi" value="add_servis">
+            <label>Tanggal Ke Konter</label>
+            <input type="date" name="tgl_masuk" id="tgl_masuk" class="form-control">
+          </div>
+        </div>
+        <div class="row">
+         <div class="col-md-12">
+           <label>Merk/Tipe HP</label>
+            <input type="text" name="tipe_hp" id="tipe_hp2" class="form-control" readonly="yes">
+           <label>Gejala Kerusakan</label>
+           <textarea class="form-control" readonly="yes" id="gejala1" rows="5" style="resize: none"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-sm btn-danger">Lanjut Servis</button>
+      <button type="button" class="btn btn-sm btn-warning" data-dismiss="modal">Tutup</button>
+    </form>
+  </div>
+</div>
+</div>
+</div>
+<!-- end of Add Servis -->

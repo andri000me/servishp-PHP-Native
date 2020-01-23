@@ -48,6 +48,16 @@
           </select>
         </div>
       </div>
+     <div class="row">
+      <div class="col-md-8">
+        <label>Kelengkapan HP</label>
+        <input type="text" name="kelengkapan" id="kelengkapan" class="form-control">
+      </div>
+      <div class="col-md-4">
+        <label>Merk/Tipe HP</label>
+        <input type="text" name="tipe_hp" id="tipe_hp" class="form-control">
+      </div>
+    </div>
       <div class="row">
         <div class="col-md-6">
          <label>Gejala</label>
@@ -58,12 +68,6 @@
          <textarea id="diagnosa" name="diagnosa" class="form-control" rows="4" style="resize: none;"></textarea>
        </div>
      </div>
-     <div class="row">
-      <div class="col-md-12">
-        <label>Kelengkapan HP</label>
-        <input type="text" name="kelengkapan" id="kelengkapan" class="form-control">
-      </div>
-    </div>
     <div class="row">
      <div class="col-md-6">
        <label>Tanggal Selesai</label>
@@ -210,7 +214,7 @@
 </div>
 <!-- end of Modal Delete Detail Servis-->
 
-<!-- Modal Servis -->
+<!-- Modal Konsultasi -->
 <div class="modal fade" id="modalKonsultasi" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -226,7 +230,7 @@
              <input type="text" name="id_servis" id="id_servis1" class="form-control">
            </div>
            <div class="col-md-6">
-             <label>Tanggal Masuk</label>
+             <label>Tanggal Konsultasi</label>
              <input type="date" name="tgl_masuk" id="tgl_masuk1" class="form-control">
            </div>
          </div>
@@ -245,9 +249,9 @@
               ?>
             </select>
           </div>
-          <div class="col-md-6"><br>
-            <input type="radio" name="pindah" id="pindah" value="aktif" class="radio-col-black">
-            <label for="pindah">Pindah Ke Servis</label><br>
+          <div class="col-md-6">
+            <label>Merk/Tipe HP</label>
+            <input type="text" name="tipe_hp" id="tipe_hp1" class="form-control">
          </div>
        </div>
        <div class="row">
@@ -271,4 +275,4 @@
 </div>
 </div>
 </div>
-<!-- end of Modal Servis -->
+<!-- end of Modal Konsultasi -->

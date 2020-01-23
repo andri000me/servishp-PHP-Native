@@ -14,6 +14,7 @@
 					<td>No</td>
 					<td>Kode Servis</td>
 					<td>Tanggal</td>
+					<td>Merk/Tipe HP</td>
 					<td>Gejala</td>
 					<td>Diagnosa</td>
 					<td>Total Biaya</td>
@@ -35,6 +36,7 @@
 						<td><?php echo $no;$no++; ?></td>
 						<td><?php echo $value['id_servis'] ?></td>
 						<td><?php echo $value['tgl_masuk'] ?></td>
+						<td><?php echo $value['tipe_hp'] ?></td>
 						<td><?php echo $value['gejala'] ?></td>
 						<td><?php echo $value['diagnosa'] ?></td>
 						<td><?php echo $value['total_biaya'] ?></td>

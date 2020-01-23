@@ -15,6 +15,7 @@ $kode = $dao->generateKode();
         $('#nama_teknisi').val('0');
         $('#gejala').val('');
         $('#diagnosa').val('');
+        $('#tipe_hp').val('');
         $('#kelengkapan').val('');
         $('#tgl_selesai').val('');
         $('#total_biaya').val('0');
@@ -26,12 +27,13 @@ $kode = $dao->generateKode();
         $('#modalServis').modal('show');   
     }
 
-    function ubahServis(id,tgl_masuk,nama_pelanggan,nama_teknisi,gejala,diagnosa,kelengkapan,tgl_selesai,total_biaya,status_servis,status_pembayaran,aksi){
+    function ubahServis(id,tgl_masuk,nama_pelanggan,nama_teknisi,gejala,diagnosa,kelengkapan,tgl_selesai,total_biaya,status_servis,status_pembayaran,aksi,tipe_hp){
         $('#id_servis').val(id);
         $('#aksi_servis').val('ubah');
         $('#tgl_masuk').val(tgl_masuk);
         $('#nama_pelanggan').val(nama_pelanggan);
         $('#nama_teknisi').val(nama_teknisi);
+        $('#tipe_hp').val(tipe_hp);
         $('#gejala').val(gejala);
         $('#diagnosa').val(diagnosa);
         $('#kelengkapan').val(kelengkapan);
@@ -164,7 +166,7 @@ $kode = $dao->generateKode();
                                             <th><center>Tanggal Masuk</center></th>
                                             <th><center>Nama Pelanggan</center></th>
                                             <th><center>Teknisi</center></th>
-                                            <th><center>Gejala</center></th>
+                                            <th><center>Merk/Tipe HP</center></th>
                                             <th><center>Status Servis</center></th>
                                             <th><center>Aksi</center></th>
                                         </tr>
@@ -189,7 +191,7 @@ $kode = $dao->generateKode();
                                                 <td><?php echo $value['tgl_masuk'];?></td>
                                                 <td><?php echo $value['nama_user'] ?></td>
                                                 <td><?php echo $value['nama_teknisi'] ?></td>
-                                                <td><?php echo $value['gejala'] ?></td>
+                                                <td><?php echo $value['tipe_hp'] ?></td>
                                                 <td><?php echo $value['status_servis'] ?></td>
                                                 <td nowrap="">
                                                     <center>
@@ -199,7 +201,7 @@ $kode = $dao->generateKode();
                                                         <button type="button" class="btn bg-blue btn-circle waves-effect waves-circle waves-float waves-light" title="Info Servis" onclick="ubahServis('<?php echo $value['id_servis']."','".$value['tgl_masuk']."','".$value['id_user']."','".$value['id_teknisi']."','".$value['gejala']."','".$value['diagnosa']."','".$value['kelengkapan']."','".$value['tgl_selesai']."','".$value['total_biaya']."','".$value['status_servis']."','".$value['status_bayar']."','hidden'" ?>)">
                                                             <i class="material-icons">help_outline</i>
                                                         </button>
-                                                        <button type="button" class="btn bg-orange btn-circle waves-effect waves-circle waves-float waves-light" title="Edit Data" onclick="ubahServis('<?php echo $value['id_servis']."','".$value['tgl_masuk']."','".$value['id_user']."','".$value['id_teknisi']."','".$value['gejala']."','".$value['diagnosa']."','".$value['kelengkapan']."','".$value['tgl_selesai']."','".$value['total_biaya']."','".$value['status_servis']."','".$value['status_bayar']."','visible'" ?>)">
+                                                        <button type="button" class="btn bg-orange btn-circle waves-effect waves-circle waves-float waves-light" title="Edit Data" onclick="ubahServis('<?php echo $value['id_servis']."','".$value['tgl_masuk']."','".$value['id_user']."','".$value['id_teknisi']."','".$value['gejala']."','".$value['diagnosa']."','".$value['kelengkapan']."','".$value['tgl_selesai']."','".$value['total_biaya']."','".$value['status_servis']."','".$value['status_bayar']."','visible','".$value['tipe_hp']."'" ?>)">
                                                             <i class="material-icons">mode_edit</i>
                                                         </button>
                                                         <button type="button" class="btn bg-red btn-circle waves-effect waves-circle waves-float waves-light" title="Hapus Data" onclick="hapusServis('<?php echo $value['id_servis']."','".$value['nama_user']; ?>');">

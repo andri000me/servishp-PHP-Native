@@ -11,13 +11,14 @@ if (isset($_POST['aksi_servis'])) {
 		$nama_teknisi = $_POST['nama_teknisi'];
 		$gejala = $_POST['gejala'];
 		$diagnosa = $_POST['diagnosa'];
+		$tipe_hp = $_POST['tipe_hp'];
 		$kelengkapan = $_POST['kelengkapan'];
 		$tgl_selesai = $_POST['tgl_selesai'];
 		$total_biaya = $_POST['total_biaya'];
 		$status_servis = $_POST['status_servis'];
 		$status_pembayaran = $_POST['status_pembayaran'];
 
-		$query = "INSERT INTO `servis`(`id_servis`, `id_user`, `id_teknisi`, `tgl_masuk`, `tgl_selesai`, `gejala`, `kelengkapan`, `total_biaya`, `diagnosa`, `status_servis`, `status_bayar`) VALUES ('$id_servis','$nama_pelanggan','$nama_teknisi','$tgl_masuk','$tgl_selesai','$gejala','$kelengkapan','$total_biaya','$diagnosa','$status_servis','$status_pembayaran')";
+		$query = "INSERT INTO `servis`(`id_servis`, `id_user`, `id_teknisi`, `tgl_masuk`, `tgl_selesai`, `gejala`, `kelengkapan`, `total_biaya`, `diagnosa`, `status_servis`, `status_bayar`,`tipe_hp`) VALUES ('$id_servis','$nama_pelanggan','$nama_teknisi','$tgl_masuk','$tgl_selesai','$gejala','$kelengkapan','$total_biaya','$diagnosa','$status_servis','$status_pembayaran','$tipe_hp')";
 		if ($dao->execute($query)) {
 			$pesan = "?pesan=bg-orange,Sukses, Data berhasil ditambah.";
 		}
@@ -30,6 +31,7 @@ if (isset($_POST['aksi_servis'])) {
 		$tgl_masuk = $_POST['tgl_masuk'];
 		$nama_pelanggan = $_POST['nama_pelanggan'];
 		$nama_teknisi = $_POST['nama_teknisi'];
+		$tipe_hp = $_POST['tipe_hp'];
 		$gejala = $_POST['gejala'];
 		$diagnosa = $_POST['diagnosa'];
 		$kelengkapan = $_POST['kelengkapan'];
@@ -38,7 +40,7 @@ if (isset($_POST['aksi_servis'])) {
 		$status_servis = $_POST['status_servis'];
 		$status_pembayaran = $_POST['status_pembayaran'];
 
-		$query = "UPDATE `servis` SET `id_user`='$nama_pelanggan',`id_teknisi`='$nama_teknisi',`tgl_masuk`='$tgl_masuk',`tgl_selesai`='$tgl_selesai',`gejala`='$gejala',`kelengkapan`='$kelengkapan',`total_biaya`='$total_biaya',`diagnosa`='$diagnosa',`status_servis`='$status_servis',`status_bayar`='$status_pembayaran' WHERE id_servis = '$id_servis'";
+		$query = "UPDATE `servis` SET `id_user`='$nama_pelanggan',`id_teknisi`='$nama_teknisi',`tgl_masuk`='$tgl_masuk',`tgl_selesai`='$tgl_selesai',`gejala`='$gejala',`kelengkapan`='$kelengkapan',`total_biaya`='$total_biaya',`diagnosa`='$diagnosa',`status_servis`='$status_servis',`status_bayar`='$status_pembayaran',`tipe_hp`='$tipe_hp' WHERE id_servis = '$id_servis'";
 		if ($dao->execute($query)) {
 			$pesan = "?pesan=bg-orange,Sukses, Data berhasil diubah.";
 		}

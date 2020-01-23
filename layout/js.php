@@ -49,3 +49,10 @@
     <script src="../js/admin.js"></script>
     <script src="../js/pages/index.js"></script>
     
+    <script type="text/javascript">
+        var auto_refresh = setInterval(
+            function () {
+                $('#notif-penjualan').load('notifikasi_penjualan.php').fadeIn("slow");
+                $('#notif-servis').load('notifikasi_servis.php').fadeIn("slow");
+            }, 1000);
+    </script>

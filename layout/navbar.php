@@ -12,19 +12,19 @@
                 <li class="dropdown">
                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
                         <i class="material-icons">local_mall</i>
-                        <span class="label-count">3</span>
+                        <span class="label-count" id="notif-penjualan"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="header">NOTIFIKASI ORDER</li>
+                        <li class="header">NOTIFIKASI PESANAN</li>
                         <li class="body">
                             <ul class="menu">
                                 <li>
-                                    <a href="javascript:void(0);">
+                                    <a href="order.php">
                                         <div class="icon-circle bg-light-green">
-                                            <i class="material-icons">person_add</i>
+                                            <i class="material-icons">local_grocery_store</i>
                                         </div>
                                         <div class="menu-info">
-                                            <h4><span id="notif-penjualan">2</span> Pemesanan Baru</h4>
+                                            <h4><span id=""></span>Lihat Semua Pemesanan Baru</h4>
                                             <p>
                                                 <i class="material-icons">access_time</i> Beberapa waktu lalu
                                             </p>
@@ -32,9 +32,6 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>
-                        <li class="footer">
-                            <a href="pembelian.php">Lihat Semua Pemesanan Baru</a>
                         </li>
                     </ul>
                 </li>
@@ -43,19 +40,19 @@
                 <li class="dropdown">
                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
                         <i class="material-icons">build</i>
-                        <span class="label-count">9</span>
+                        <span class="label-count" id="notif-servis"></span>
                     </a>
                     <ul class="dropdown-menu">
                         <li class="header">NOTIFIKASI SERVIS</li>
                         <li class="body">
                             <ul class="menu">
                                 <li>
-                                    <a href="#">
+                                    <a href="servis.php">
                                         <div class="icon-circle bg-light-green">
-                                            <i class="material-icons">person_add</i>
+                                            <i class="material-icons">phonelink_erase</i>
                                         </div>
                                         <div class="menu-info">
-                                            <h4><span id="notif-servis">2</span> Servis Baru</h4>
+                                            <h4><span id=""></span>Lihat Semua Servis Baru</h4>
                                             <p>
                                                 <i class="material-icons">access_time</i> Beberapa waktu lalu
                                             </p>
@@ -63,12 +60,12 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="konsulatasi.php">
                                         <div class="icon-circle bg-light-green">
-                                            <i class="material-icons">person_add</i>
+                                            <i class="material-icons">call</i>
                                         </div>
                                         <div class="menu-info">
-                                            <h4><span id="notif-servis">2</span> Konsultasi Baru</h4>
+                                            <h4><span id=""></span>Lihat Semua Konsultasi Baru</h4>
                                             <p>
                                                 <i class="material-icons">access_time</i> Beberapa waktu lalu
                                             </p>
@@ -76,9 +73,6 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>
-                        <li class="footer">
-                            <a href="servis.php">Lihat Semua Servis Baru</a>
                         </li>
                     </ul>
                 </li>

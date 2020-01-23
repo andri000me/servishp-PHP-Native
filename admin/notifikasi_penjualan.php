@@ -6,5 +6,5 @@ $result = $dao->notifPenjualan();
 $result = $result->fetch_array();
 $notif = $result['jml'];
 
-var_dump($notif);
+echo $notif;
  ?>

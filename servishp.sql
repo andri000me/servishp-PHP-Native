@@ -58,12 +58,15 @@ CREATE TABLE `detail_penjualan` (
   KEY `id_jual` (`id_jual`),
   CONSTRAINT `detail_penjualan_ibfk_1` FOREIGN KEY (`id_barang`) REFERENCES `barang` (`id_barang`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `detail_penjualan_ibfk_2` FOREIGN KEY (`id_jual`) REFERENCES `penjualan` (`id_penjualan`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 /*Data for the table `detail_penjualan` */
 
 insert  into `detail_penjualan`(`id_detpenjualan`,`id_jual`,`id_barang`,`jml_jual`,`subtotal_jual`) values 
-(10,'NNHK950X',10,2,60000);
+(10,'NNHK950X',10,2,60000),
+(14,'5BX1U31N',10,2,60000),
+(15,'6CM5JCDJ',10,1,30000),
+(16,'ZW8SWHA3',26,3,15000);
 
 /*Table structure for table `detail_servis` */
 
@@ -128,7 +131,10 @@ CREATE TABLE `penjualan` (
 /*Data for the table `penjualan` */
 
 insert  into `penjualan`(`id_penjualan`,`id_user`,`tgl_jual`,`total_penjualan`,`status_penjualan`,`penilaian_pelanggan`) values 
-('NNHK950X',7,'2019-12-23T13:11',60000,'order',NULL);
+('5BX1U31N',7,'2020-01-14T14:06',60000,'aktif',''),
+('6CM5JCDJ',7,'2020-01-15T9:42',30000,'batal',''),
+('NNHK950X',7,'2019-12-23T13:11',60000,'order',NULL),
+('ZW8SWHA3',7,'2020-01-15T9:42',15000,'batal','');
 
 /*Table structure for table `servis` */
 
@@ -140,11 +146,12 @@ CREATE TABLE `servis` (
   `id_teknisi` int(11) DEFAULT NULL,
   `tgl_masuk` date DEFAULT NULL,
   `tgl_selesai` date DEFAULT NULL,
+  `tipe_hp` varchar(50) DEFAULT NULL,
   `gejala` text CHARACTER SET utf8mb4,
   `kelengkapan` text CHARACTER SET utf8mb4,
   `total_biaya` int(11) DEFAULT NULL,
   `diagnosa` text CHARACTER SET utf8mb4,
-  `status_servis` varchar(20) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `status_servis` enum('aktif','selesai','konsul-baru','konsul-terjawab','batal','proses') CHARACTER SET utf8mb4 DEFAULT NULL,
   `status_bayar` varchar(20) CHARACTER SET utf8mb4 DEFAULT NULL,
   `penilaian_pelanggan` text,
   PRIMARY KEY (`id_servis`),
@@ -156,9 +163,11 @@ CREATE TABLE `servis` (
 
 /*Data for the table `servis` */
 
-insert  into `servis`(`id_servis`,`id_user`,`id_teknisi`,`tgl_masuk`,`tgl_selesai`,`gejala`,`kelengkapan`,`total_biaya`,`diagnosa`,`status_servis`,`status_bayar`,`penilaian_pelanggan`) values 
-('DASDJLA',2,6,'2019-12-16','2019-12-23','Tidak Dapat di cas','hp batangan',30000,'lubang charger rusak perkiraan biaya sekitar 35 rb','aktif','Belum Lunas','5-Pelayanan nya memuaskan'),
-('NTBJ0NEB',2,6,'2019-12-10','2019-12-13','Layar Berkedip','HP, Cas, Silikon, Gurita',90000,'LCD rusak','selesai','Belum Lunas',NULL);
+insert  into `servis`(`id_servis`,`id_user`,`id_teknisi`,`tgl_masuk`,`tgl_selesai`,`tipe_hp`,`gejala`,`kelengkapan`,`total_biaya`,`diagnosa`,`status_servis`,`status_bayar`,`penilaian_pelanggan`) values 
+('CYX23RWE',7,6,'2020-01-16','0000-00-00','Xiaomi Redmi 4','Layar berkedip','',0,'mungkin lcd nya rusak mas/mbk 123','konsul-terjawab','Belum Lunas',NULL),
+('DASDJLA',7,6,'2019-12-16','2019-12-23','Xiaomi Redmi X4','Tidak Dapat di cas','hp batangan',30000,'lubang charger rusak perkiraan biaya sekitar 35 rb','konsul-baru','Belum Lunas','5-Pelayanan nya memuaskan'),
+('NTBJ0NEB',7,6,'2019-12-10','2019-12-13','Asus Zenfone 5','Layar Berkedip','HP, Cas, Silikon, Gurita',90000,'LCD rusak','aktif','Belum Lunas',NULL),
+('TVRC12OO',7,6,'2020-01-22',NULL,'Asus Zenfone 3','kenapa kok bias mati sendiri ya?',NULL,NULL,'ganti baru','konsul-terjawab',NULL,NULL);
 
 /*Table structure for table `supplier` */
 
@@ -213,12 +222,12 @@ CREATE TABLE `temp_keranjang` (
   KEY `id_barang` (`id_barang`),
   CONSTRAINT `temp_keranjang_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `temp_keranjang_ibfk_2` FOREIGN KEY (`id_barang`) REFERENCES `barang` (`id_barang`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 /*Data for the table `temp_keranjang` */
 
 insert  into `temp_keranjang`(`id_keranjang`,`id_user`,`id_barang`,`jumlah`,`sub_total`) values 
-(1,7,10,2,60000);
+(4,7,10,2,60000);
 
 /*Table structure for table `users` */
 

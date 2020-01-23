@@ -10,8 +10,9 @@ if (!empty($_POST['aksi'])) {
 	elseif ($_POST['aksi'] == 'delete' && !empty($_POST['id_pertanyaan'])) {
 		$dao->hapusKonsultasi($_POST['id_pertanyaan']);
 	}
-	elseif ($_POST['aksi'] == 'add_servis' && !empty($_POST['id']){
-
+	elseif ($_POST['aksi'] == 'add_servis' && !empty($_POST['id_servis'])){
+		$data = array($_POST['id_servis'],$_POST['tgl_masuk']);
+		$dao->pindahKeServis($data);
 	}
 }
 $url = "konsultasi.php";

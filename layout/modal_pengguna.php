@@ -202,7 +202,7 @@
             <input type="hidden" name="id_servis" id="id_servis">
             <input type="hidden" name="aksi" value="add_servis">
             <label>Tanggal Ke Konter</label>
-            <input type="date" name="tgl_masuk" id="tgl_masuk" class="form-control">
+            <input type="date" name="tgl_masuk" class="form-control">
           </div>
         </div>
         <div class="row">

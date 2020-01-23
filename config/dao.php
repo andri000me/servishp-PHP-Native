@@ -290,6 +290,12 @@ class Dao
 		$query = "INSERT INTO `servis`(`id_servis`,`id_user`,`tipe_hp`,`gejala`, `id_teknisi`,`tgl_masuk`,`status_servis`) VALUES ('$kode','$data[0]','$data[1]','$data[2]','$data[3]','$now','konsul-baru')";
 		return mysqli_query($this->link->conn, $query);
 	}
+
+	public function pindahKeServis($data)
+	{	
+		$query = "UPDATE `servis` SET `tgl_masuk`= '$data[1]',`status_servis`= 'aktif' WHERE `id_servis`= '$data[0]'";
+		return mysqli_query($this->link->conn, $query);
+	}
 	
 	public function hapusKonsultasi($id)
 	{	

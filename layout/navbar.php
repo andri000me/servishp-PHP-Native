@@ -60,7 +60,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="konsulatasi.php">
+                                    <a href="konsultasi.php">
                                         <div class="icon-circle bg-light-green">
                                             <i class="material-icons">call</i>
                                         </div>

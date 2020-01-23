@@ -4,6 +4,7 @@
 <?php include_once '../layout/head.php'; 
 include_once '../config/dao.php';
 $dao = new Dao();
+$dao->updateStatusServis();
 $kode = $dao->generateKode();
 ?>
 <script type="text/javascript">
@@ -126,9 +127,9 @@ $kode = $dao->generateKode();
                                     <div class="col-md-2">
                                         <select id="status_servis" name="status_servis" class="form-control col-md-2">
                                             <?php 
-                                            if (empty($_GET['status_servis']) || $_GET['status_servis'] == 'aktif') {
+                                            if (empty($_GET['status_servis']) || $_GET['status_servis'] == 'antri') {
                                                 ?>
-                                                <option value="aktif">Aktif</option>
+                                                <option value="antri">Antri</option>
                                                 <option value="proses">Proses</option>
                                                 <option value="selesai">Selesai</option>
                                                 <?php
@@ -136,14 +137,14 @@ $kode = $dao->generateKode();
                                             elseif($_GET['status_servis'] == 'proses'){
                                                 ?>
                                                 <option value="proses">Proses</option>
-                                                <option value="aktif">Aktif</option>
+                                                <option value="antri">Antri</option>
                                                 <option value="selesai">Selesai</option>
                                                 <?php
                                             }
                                             else{
                                                 ?>
                                                 <option value="selesai">Selesai</option>
-                                                <option value="aktif">Aktif</option>
+                                                <option value="antri">Antri</option>
                                                 <option value="proses">Proses</option>
                                                 <?php
                                             }
@@ -173,8 +174,8 @@ $kode = $dao->generateKode();
                                     </thead>
                                     <tbody>
                                         <?php
-                                        if (empty($_GET['status_servis']) || $_GET['status_servis'] == 'aktif') {
-                                            $result = $dao->viewServis("'aktif'");
+                                        if (empty($_GET['status_servis']) || $_GET['status_servis'] == 'antri') {
+                                            $result = $dao->viewServis("'antri'");
                                         }
                                         elseif($_GET['status_servis'] == 'proses') {
                                             $result = $dao->viewServis("'proses'");

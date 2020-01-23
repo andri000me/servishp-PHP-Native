@@ -10,5 +10,10 @@ $result = $dao->notifServis('aktif');
 $result = $result->fetch_array();
 $notif_servis = $result['jml'];
 $notif = $notif_servis+$notif_konsul;
-echo $notif;
+if ($notif == 0) {
+	echo null;
+}
+else{
+	echo $notif;
+}
  ?>

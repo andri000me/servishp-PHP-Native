@@ -293,7 +293,7 @@ class Dao
 
 	public function pindahKeServis($data)
 	{	
-		$query = "UPDATE `servis` SET `tgl_masuk`= '$data[1]',`status_servis`= 'aktif' WHERE `id_servis`= '$data[0]'";
+		$query = "UPDATE `servis` SET `tgl_masuk`= '$data[1]',`status_servis`= 'aktif', `status_bayar` = 'Belum Lunas' WHERE `id_servis`= '$data[0]'";
 		return mysqli_query($this->link->conn, $query);
 	}
 	
@@ -312,6 +312,18 @@ class Dao
 	public function notifPenjualan()
 	{	
 		$query = "SELECT count(*) as jml FROM penjualan WHERE status_penjualan = 'aktif'";
+		return mysqli_query($this->link->conn, $query);
+	}
+
+	public function updateStatusOrder()
+	{	
+		$query = "UPDATE penjualan SET `status_penjualan` = 'order' WHERE status_penjualan = 'aktif'";
+		return mysqli_query($this->link->conn, $query);
+	}
+
+	public function updateStatusServis()
+	{	
+		$query = "UPDATE servis SET `status_servis` = 'antri' WHERE status_servis = 'aktif'";
 		return mysqli_query($this->link->conn, $query);
 	}
 

@@ -5,6 +5,10 @@ $dao = new Dao();
 $result = $dao->notifPenjualan();
 $result = $result->fetch_array();
 $notif = $result['jml'];
-
-echo $notif;
- ?>
+if ($notif == 0) {
+	echo null;
+}
+else{
+	echo $notif;
+}
+?>

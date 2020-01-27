@@ -49,7 +49,7 @@
                     <a style="font-size: 23px; color: black" href="detail.php?id=<?php echo $value['id_barang'];?>"><?php echo $value['nama_barang'] ?></a>
                   </h4>
                   <h5 style="color: red;"><strong>Rp. <?php echo $value['harga_jual'] ?></strong></h5>
-                  <medium class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</medium>
+                  <!-- <medium class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</medium> -->
                   <p class="card-text" style="font-size: 12px">Stok Tersedia : <?php echo $value['stok']?></p>
                 </div>
                 <div class="card-footer">

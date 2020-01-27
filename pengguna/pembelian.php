@@ -1,4 +1,12 @@
 <?php include_once '../layout/head3.php'; ?>
+<script type="text/javascript">
+	function addRatingPembelian(id_penjualan) {
+		$('#id_nilai2').val(id_penjualan)
+		$('#rating2').val('0')
+		$('#komentar1').val('')
+		$('#modalAddPenilaianJual').modal('show');
+	}
+</script>
 <body>
 	<?php include_once '../layout/navbar3.php'; ?>
 
@@ -32,6 +40,13 @@
 						<td><?php echo $value['status_penjualan'] ?></td>
 						<td nowrap="">
 							<a href="det_pembelian.php?id=<?php echo $value['id_penjualan'] ?>"><button class="btn btn-sm btn-primary">Detail</button></a>
+							<?php 
+							if ($value['penilaian_pelanggan'] == '' && $value['status_penjualan'] == 'selesai') {
+								?>
+								<button class="btn btn-sm btn-warning" onclick="addRatingPembelian('<?php echo $value['id_penjualan'] ?>');">Beri Penialain</button>
+								<?php
+							}
+							 ?>
 						</td>
 					</tr>
 					<?php
@@ -41,6 +56,7 @@
 		</table>
 	</div>
 
+	<?php include_once '../layout/modal_pengguna.php'; ?>
 	<?php include_once '../layout/footer2.php'; ?>
 </body>
 </html>

@@ -261,3 +261,40 @@
 </div>
 </div>
 <!-- end of Add Penialaian -->
+
+<!-- Modal Add Penialaian Penjualan-->
+<div class="modal fade" id="modalAddPenilaianJual" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title"><center>Beri Penilaian</center></h4>
+      </div>
+      <div class="modal-body">
+        <form action="_crud_checkout.php" method="POST">
+        <div class="row">
+         <div class="col-md-12">
+            <input type="hidden" name="id" id="id_nilai2">
+            <input type="hidden" name="aksi" value="add_rating">
+           <label>Rating</label>
+            <select class="form-control" name="rating" id="rating2">
+              <option value="0">-- Pilih --</option>
+              <option value="1">Tidak Memuaskan</option>
+              <option value="2">Kurang Memuaskan</option>
+              <option value="3">Cukup Memuaskan</option>
+              <option value="4">Memuaskan</option>
+              <option value="5">Sangat Memuaskan</option>
+            </select>
+           <label>Komentar</label>
+           <textarea class="form-control" id="komentar2" name="komentar" rows="5" style="resize: none"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-sm btn-danger">Simpan</button>
+      <button type="button" class="btn btn-sm btn-warning" data-dismiss="modal">Tutup</button>
+    </form>
+  </div>
+</div>
+</div>
+</div>
+<!-- end of Add Penialaian -->

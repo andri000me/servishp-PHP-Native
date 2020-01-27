@@ -12,6 +12,10 @@ if (!empty($_POST)) {
 	elseif ($_POST['aksi'] == 'checkout') {
 		$dao->prosesCheckout($id);
 	}
+	elseif ($_POST['aksi'] == 'add_rating') {
+		$data = array($_POST['id'],$_POST['rating']."-".$_POST['komentar']);
+		$dao->tambahPenilaianPenjualan($data);
+	}
 }
 $url = "pembelian.php";
 ?>

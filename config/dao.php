@@ -165,7 +165,7 @@ class Dao
 
 	public function viewPenjualanBarang($id)
 	{	
-		$query = "SELECT * FROM penjualan WHERE id_user = '$id' AND `status_penjualan` <> 'selesai' AND `status_penjualan` <> 'batal'";
+		$query = "SELECT * FROM penjualan WHERE id_user = '$id' AND `status_penjualan` <> 'batal'";
 		return mysqli_query($this->link->conn, $query);	
 	}
 
@@ -332,6 +332,13 @@ class Dao
 		$query = "UPDATE `servis` SET `penilaian_pelanggan`= '$data[1]' WHERE `id_servis`= '$data[0]'";
 		return mysqli_query($this->link->conn, $query);
 	}
+
+	public function tambahPenilaianPenjualan($data)
+	{	
+		$query = "UPDATE `penjualan` SET `penilaian_pelanggan`= '$data[1]' WHERE `id_penjualan`= '$data[0]'";
+		return mysqli_query($this->link->conn, $query);
+	}
+
 	public function execute($query)
 	{
 		$result = mysqli_query($this->link->conn, $query);

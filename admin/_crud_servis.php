@@ -69,7 +69,7 @@ if (isset($_POST['aksi_servis'])) {
 	elseif ($_POST['aksi_servis'] == 'ubah_konsul' && !empty($_POST['id_servis'])) {
 		// var_dump($_POST);die;
 		$id_servis = $_POST['id_servis'];
-		$diagnosa = $_POST['diagnosa'];
+		$diagnosa = $_POST['diagnosa']."-".$_POST['estimasi_harga'];
 		if (empty($_POST['pindah'])) {
 			$status = 'konsul-terjawab';
 		}

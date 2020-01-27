@@ -279,7 +279,7 @@ class Dao
 
 	public function viewServisHp($id)
 	{	
-		$query = "SELECT * FROM servis WHERE `status_servis` IN ('aktif','selesai') AND id_user = '$id' ORDER BY tgl_masuk DESC";
+		$query = "SELECT * FROM servis WHERE `status_servis` IN ('aktif','proses','selesai') AND id_user = '$id' ORDER BY tgl_masuk DESC";
 		return mysqli_query($this->link->conn, $query);
 	}
 
@@ -327,6 +327,11 @@ class Dao
 		return mysqli_query($this->link->conn, $query);
 	}
 
+	public function tambahPenilaian($data)
+	{	
+		$query = "UPDATE `servis` SET `penilaian_pelanggan`= '$data[1]' WHERE `id_servis`= '$data[0]'";
+		return mysqli_query($this->link->conn, $query);
+	}
 	public function execute($query)
 	{
 		$result = mysqli_query($this->link->conn, $query);

@@ -131,7 +131,7 @@ CREATE TABLE `penjualan` (
 /*Data for the table `penjualan` */
 
 insert  into `penjualan`(`id_penjualan`,`id_user`,`tgl_jual`,`total_penjualan`,`status_penjualan`,`penilaian_pelanggan`) values 
-('5BX1U31N',7,'2020-01-14T14:06',60000,'aktif',''),
+('5BX1U31N',7,'2020-01-14T14:06',60000,'order',''),
 ('6CM5JCDJ',7,'2020-01-15T9:42',30000,'batal',''),
 ('NNHK950X',7,'2019-12-23T13:11',60000,'order',NULL),
 ('ZW8SWHA3',7,'2020-01-15T9:42',15000,'batal','');
@@ -151,7 +151,7 @@ CREATE TABLE `servis` (
   `kelengkapan` text CHARACTER SET utf8mb4,
   `total_biaya` int(11) DEFAULT NULL,
   `diagnosa` text CHARACTER SET utf8mb4,
-  `status_servis` enum('aktif','selesai','konsul-baru','konsul-terjawab','batal','proses') CHARACTER SET utf8mb4 DEFAULT NULL,
+  `status_servis` enum('aktif','selesai','konsul-baru','konsul-terjawab','batal','proses','antri') CHARACTER SET utf8mb4 DEFAULT NULL,
   `status_bayar` varchar(20) CHARACTER SET utf8mb4 DEFAULT NULL,
   `penilaian_pelanggan` text,
   PRIMARY KEY (`id_servis`),
@@ -164,10 +164,10 @@ CREATE TABLE `servis` (
 /*Data for the table `servis` */
 
 insert  into `servis`(`id_servis`,`id_user`,`id_teknisi`,`tgl_masuk`,`tgl_selesai`,`tipe_hp`,`gejala`,`kelengkapan`,`total_biaya`,`diagnosa`,`status_servis`,`status_bayar`,`penilaian_pelanggan`) values 
-('CYX23RWE',7,6,'2020-01-16','0000-00-00','Xiaomi Redmi 4','Layar berkedip','',0,'mungkin lcd nya rusak mas/mbk 123','konsul-terjawab','Belum Lunas',NULL),
-('DASDJLA',7,6,'2019-12-16','2019-12-23','Xiaomi Redmi X4','Tidak Dapat di cas','hp batangan',30000,'lubang charger rusak perkiraan biaya sekitar 35 rb','konsul-baru','Belum Lunas','5-Pelayanan nya memuaskan'),
-('NTBJ0NEB',7,6,'2019-12-10','2019-12-13','Asus Zenfone 5','Layar Berkedip','HP, Cas, Silikon, Gurita',90000,'LCD rusak','aktif','Belum Lunas',NULL),
-('TVRC12OO',7,6,'2020-01-22',NULL,'Asus Zenfone 3','kenapa kok bias mati sendiri ya?',NULL,NULL,'ganti baru','konsul-terjawab',NULL,NULL);
+('CYX23RWE',7,6,'2020-01-23','0000-00-00','Xiaomi Redmi 4','Layar berkedip','',0,'mungkin lcd nya rusak mas/mbk 123','antri','Belum Lunas',NULL),
+('DASDJLA',7,6,'2019-12-16','2019-12-23','Xiaomi Redmi X4','Tidak Dapat di cas','hp batangan',30000,'lubang charger rusak perkiraan biaya sekitar 35 rb','konsul-terjawab','Belum Lunas','5-Pelayanan nya memuaskan'),
+('NTBJ0NEB',7,6,'2019-12-10','2019-12-13','Asus Zenfone 5','Layar Berkedip','HP, Cas, Silikon, Gurita',90000,'LCD rusak','antri','Belum Lunas',NULL),
+('TVRC12OO',7,6,'2020-03-26',NULL,'Asus Zenfone 3','kenapa kok bias mati sendiri ya?',NULL,NULL,'ganti baru','antri','Belum Lunas',NULL);
 
 /*Table structure for table `supplier` */
 

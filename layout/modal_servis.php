@@ -48,16 +48,16 @@
           </select>
         </div>
       </div>
-     <div class="row">
-      <div class="col-md-8">
-        <label>Kelengkapan HP</label>
-        <input type="text" name="kelengkapan" id="kelengkapan" class="form-control">
+      <div class="row">
+        <div class="col-md-8">
+          <label>Kelengkapan HP</label>
+          <input type="text" name="kelengkapan" id="kelengkapan" class="form-control">
+        </div>
+        <div class="col-md-4">
+          <label>Merk/Tipe HP</label>
+          <input type="text" name="tipe_hp" id="tipe_hp" class="form-control">
+        </div>
       </div>
-      <div class="col-md-4">
-        <label>Merk/Tipe HP</label>
-        <input type="text" name="tipe_hp" id="tipe_hp" class="form-control">
-      </div>
-    </div>
       <div class="row">
         <div class="col-md-6">
          <label>Gejala</label>
@@ -68,33 +68,33 @@
          <textarea id="diagnosa" name="diagnosa" class="form-control" rows="4" style="resize: none;"></textarea>
        </div>
      </div>
-    <div class="row">
-     <div class="col-md-6">
-       <label>Tanggal Selesai</label>
-       <input type="date" name="tgl_selesai" id="tgl_selesai" class="form-control">
+     <div class="row">
+       <div class="col-md-6">
+         <label>Tanggal Selesai</label>
+         <input type="date" name="tgl_selesai" id="tgl_selesai" class="form-control">
+       </div>
+       <div class="col-md-6">
+         <label>Total Biaya</label>
+         <input type="text" name="total_biaya" id="total_biaya" class="form-control">
+       </div>
      </div>
-     <div class="col-md-6">
-       <label>Total Biaya</label>
-       <input type="text" name="total_biaya" id="total_biaya" class="form-control">
-     </div>
-   </div>
-   <div class="row">
-     <div class="col-md-6">
-       <label>Status Servis</label>
-       <select class="form-control" id="status_servis" name="status_servis">
-        <option value="aktif">Aktif</option>
-        <option value="proses">Proses</option>
-        <option value="selesai">Selesai</option>
+     <div class="row">
+       <div class="col-md-6">
+         <label>Status Servis</label>
+         <select class="form-control" id="status_servis" name="status_servis">
+          <option value="aktif">Aktif</option>
+          <option value="proses">Proses</option>
+          <option value="selesai">Selesai</option>
+        </select>
+      </div>
+      <div class="col-md-6">
+       <label>Status Pembayaran</label>
+       <select class="form-control" id="status_pembayaran" name="status_pembayaran">
+        <option value="Belum Lunas">Belum Lunas</option>
+        <option value="Lunas">Lunas</option>
       </select>
     </div>
-    <div class="col-md-6">
-     <label>Status Pembayaran</label>
-     <select class="form-control" id="status_pembayaran" name="status_pembayaran">
-      <option value="Belum Lunas">Belum Lunas</option>
-      <option value="Lunas">Lunas</option>
-    </select>
   </div>
-</div>
 </div>
 <div class="modal-footer">
   <button type="submit" class="btn bg-blue waves-effect" id="tombol_servis1">
@@ -224,14 +224,18 @@
       <div class="modal-body">
         <form action="_crud_servis.php" method="POST">
           <div class="row">
-           <div class="col-md-6">
+           <div class="col-md-4">
              <label>Kode Konsultasi</label>
              <input type="hidden" name="aksi_servis" id="aksi_servis1">
              <input type="text" name="id_servis" id="id_servis1" class="form-control">
            </div>
-           <div class="col-md-6">
+           <div class="col-md-4">
              <label>Tanggal Konsultasi</label>
-             <input type="date" name="tgl_masuk" id="tgl_masuk1" class="form-control">
+             <input type="date" required="yes" name="tgl_masuk" id="tgl_masuk1" class="form-control">
+           </div>
+           <div class="col-md-4">
+             <label>Estimasi Biaya</label>
+             <input type="text" name="estimasi_harga" id="estimasi_harga" class="form-control">
            </div>
          </div>
          <div class="row">
@@ -252,26 +256,26 @@
           <div class="col-md-6">
             <label>Merk/Tipe HP</label>
             <input type="text" name="tipe_hp" id="tipe_hp1" class="form-control">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+           <label>Gejala</label>
+           <textarea id="gejala1" name="gejala" class="form-control" rows="6" style="resize: none;"></textarea>
+         </div>
+         <div class="col-md-6">
+           <label>Diagnosa</label>
+           <textarea id="diagnosa1" name="diagnosa" class="form-control" rows="6" style="resize: none;"></textarea>
          </div>
        </div>
-       <div class="row">
-        <div class="col-md-6">
-         <label>Gejala</label>
-         <textarea id="gejala1" name="gejala" class="form-control" rows="6" style="resize: none;"></textarea>
-       </div>
-       <div class="col-md-6">
-         <label>Diagnosa</label>
-         <textarea id="diagnosa1" name="diagnosa" class="form-control" rows="6" style="resize: none;"></textarea>
-       </div>
      </div>
-   </div>
-   <div class="modal-footer">
-    <button type="submit" class="btn bg-blue waves-effect" id="tombol_konsul">
-      <span id="tombol_servis"></span>
-    </button>
-    <button type="button" class="btn bg-red waves-effect" data-dismiss="modal">Tutup</button>
-  </form>
-</div>
+     <div class="modal-footer">
+      <button type="submit" class="btn bg-blue waves-effect" id="tombol_konsul">
+        <span id="tombol_servis"></span>
+      </button>
+      <button type="button" class="btn bg-red waves-effect" data-dismiss="modal">Tutup</button>
+    </form>
+  </div>
 </div>
 </div>
 </div>

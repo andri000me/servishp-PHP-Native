@@ -120,6 +120,7 @@ $dao = new Dao();
                                                 <td><?php echo $nilai[1]; ?></td>
                                             </tr>
                                             <?php
+                                            $bintang = null;
                                         }
                                         ?>
                                     </tbody>

@@ -1,4 +1,12 @@
 <?php include_once '../layout/head3.php'; ?>
+<script type="text/javascript">
+	function addRating(id_servis) {
+		$('#id_nilai').val(id_servis)
+		$('#rating').val('0')
+		$('#komentar').val('')
+		$('#modalAddPenilaian').modal('show');
+	}
+</script>
 <body>
 	<?php include_once '../layout/navbar3.php'; ?>
 
@@ -44,6 +52,13 @@
 						<td><?php echo $value['status_bayar'] ?></td>
 						<td nowrap="">
 							<a href="det_servis.php?id=<?php echo $value['id_servis']; ?>"><button class="btn btn-sm btn-success" type="button">Detail</button></a>
+							<?php 
+							if ($value['status_servis'] == 'selesai' && $value['penilaian_pelanggan'] == '') {
+								?>
+								<button class="btn btn-sm btn-warning" type="button" onclick="addRating('<?php echo $value['id_servis'] ?>')">Beri Penilaian</button>
+								<?php
+							}
+							 ?>
 						</td>
 					</tr>
 					<?php

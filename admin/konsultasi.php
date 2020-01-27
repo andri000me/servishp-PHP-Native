@@ -133,6 +133,7 @@ $kode = $dao->generateKode();
                                             <th><center>Merk/Tipe HP</center></th>
                                             <th><center>Gejala</center></th>
                                             <th><center>Diagnosa</center></th>
+                                            <th><center>Estimasi Biaya</center></th>
                                             <th><center>Aksi</center></th>
                                         </tr>
                                     </thead>
@@ -147,6 +148,9 @@ $kode = $dao->generateKode();
                                         
                                         $no = 1;
                                         foreach ($result as $value){
+                                            $data = explode("-", $value['diagnosa']);
+                                            $diagnosa = $data[0];
+                                            $estimasi = $data[1];
                                             ?>
                                             <tr>
                                                 <td><?php echo $no; $no++; ?></td>
@@ -154,7 +158,8 @@ $kode = $dao->generateKode();
                                                 <td><?php echo $value['nama_user'] ?></td>
                                                 <td><?php echo $value['tipe_hp'] ?></td>
                                                 <td><?php echo $value['gejala'] ?></td>
-                                                <td><?php echo $value['diagnosa'] ?></td>
+                                                <td><?php echo $diagnosa ?></td>
+                                                <td><?php echo "Rp ".$estimasi ?></td>
                                                 <td nowrap="">
                                                     <center>
                                                         <button type="button" class="btn bg-orange btn-circle waves-effect waves-circle waves-float waves-light" title="Edit Data" onclick="ubahServis('<?php echo $value['id_servis']."','".$value['tgl_masuk']."','".$value['id_user']."','".$value['gejala']."','".$value['diagnosa']."','".$value['tipe_hp']."'" ?>)">

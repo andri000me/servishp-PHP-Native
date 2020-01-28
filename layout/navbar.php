@@ -24,7 +24,7 @@
                                             <i class="material-icons">local_grocery_store</i>
                                         </div>
                                         <div class="menu-info">
-                                            <h4><span id=""></span>Lihat Semua Pemesanan Baru</h4>
+                                            <h4><span id="notif-penjualan-baru"></span> Pemesanan Baru</h4>
                                             <p>
                                                 <i class="material-icons">access_time</i> Beberapa waktu lalu
                                             </p>
@@ -52,7 +52,7 @@
                                             <i class="material-icons">phonelink_erase</i>
                                         </div>
                                         <div class="menu-info">
-                                            <h4><span id=""></span>Lihat Semua Servis Baru</h4>
+                                            <h4><span id="notif-servis-baru"></span> Servis Baru</h4>
                                             <p>
                                                 <i class="material-icons">access_time</i> Beberapa waktu lalu
                                             </p>
@@ -65,7 +65,7 @@
                                             <i class="material-icons">call</i>
                                         </div>
                                         <div class="menu-info">
-                                            <h4><span id=""></span>Lihat Semua Konsultasi Baru</h4>
+                                            <h4><span id="notif-konsul-baru"></span> Konsultasi Baru</h4>
                                             <p>
                                                 <i class="material-icons">access_time</i> Beberapa waktu lalu
                                             </p>

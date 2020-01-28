@@ -53,6 +53,9 @@
         var auto_refresh = setInterval(
             function () {
                 $('#notif-penjualan').load('notifikasi_penjualan.php').fadeIn("slow");
-                $('#notif-servis').load('notifikasi_servis.php').fadeIn("slow");
+                $('#notif-penjualan-baru').load('notifikasi_penjualan.php').fadeIn("slow");
+                $('#notif-servis').load('notifikasi_servis.php?tipe=all').fadeIn("slow");
+                $('#notif-servis-baru').load('notifikasi_servis.php?tipe=servis').fadeIn("slow");
+                $('#notif-konsul-baru').load('notifikasi_servis.php?tipe=konsul').fadeIn("slow");
             }, 1000);
     </script>

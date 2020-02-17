@@ -45,7 +45,7 @@ if (empty($result)){
         </div>
         <div class="col-md-6">
           <h4><strong><?php echo $result['nama_barang'] ?></strong></h4>
-          <medium class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734; | 2 Penilaian | 2 Terjual</medium><br><br><br>
+          <!-- <medium class="text-muted"> 2 Terjual</medium>--><br> 
           <div class="card-body" style="background-color: #FAEBD7; color: red;"><h3><strong>Rp 30000</strong></h3></div><br>
           <span>Pengiriman : Only COD</span><br><br>
           <div class="row">
@@ -71,21 +71,6 @@ if (empty($result)){
         </div>
         <div class="col-md-12">
           <br>
-          <div class="card">
-            <div class="card-header"><h5><strong>Penilaian Pembeli</strong></h5></div>
-            <div class="card-body">
-              <table>
-                <tr>
-                  <td>
-                    Foto
-                  </td>
-                  <td>
-                    <p>Oke Banget</p>
-                  </td>
-                </tr>
-              </table>
-            </div>
-          </div>
         </div>
       </div>
     </div>

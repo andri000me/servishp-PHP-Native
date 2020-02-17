@@ -34,7 +34,7 @@ if ($_SESSION['level'] != "admin" || empty($_SESSION['level'])) {
     <link href="../plugins/animate-css/animate.css" rel="stylesheet" />
 
     <!-- Select Plugin Js -->
-    <script src="../../plugins/bootstrap-select/js/bootstrap-select.js"></script>
+    <script src="../plugins/bootstrap-select/js/bootstrap-select.js"></script>
     
     <!-- Morris Chart Css-->
     <link href="../plugins/morrisjs/morris.css" rel="stylesheet" />
@@ -47,5 +47,4 @@ if ($_SESSION['level'] != "admin" || empty($_SESSION['level'])) {
     
     <!-- JQuery DataTable Css -->
     <link href="../plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap4.min.css" rel="stylesheet">
-    
 </head>

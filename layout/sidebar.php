@@ -100,19 +100,13 @@
                         </li>
                     </ul>
                 </li>
-                <li class="">
-                    <a href="penilaian.php">
-                        <i class="material-icons">stars</i>
-                        <span>Penilaian Pembeli</span>
-                    </a>
-                </li>
             </ul>
         </div>
         <!-- #Menu -->
         <!-- Footer -->
         <div class="legal">
             <div class="copyright">
-                <center>&copy; 2019 <a href="javascript:void(0);">Teknisi Tamvan</a></center>
+                <center>&copy; 2020 <a href="javascript:void(0);">Teknisi Tamvan</a></center>
             </div>
         </div>
         <!-- #Footer -->

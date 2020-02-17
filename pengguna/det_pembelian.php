@@ -10,6 +10,7 @@ if (isset($_GET['id'])) {
     $tgl_jual = explode('T', $result['tgl_jual']);
     $total_order = $result['total_penjualan'];
     $kd_transaksi = $result['id_penjualan'];
+    $status = $result['status_penjualan'];
 }
 else{
     $tgl_jual = '-';
@@ -74,6 +75,9 @@ else{
                 </tbody>
             </table>
             <div class="row">
+                <?php 
+                if($status == 'aktif'){
+                 ?>
                 <div class="col-md-7"></div>
                 <div class="col-md-3">
                     <span style="font-size: 20px">Subtotal</span> <strong><span style="color: red; font-size: 24px">Rp <?php echo $total_order ?> </span></strong>
@@ -81,6 +85,7 @@ else{
                 <div class="col-md-2">
                     <button class="btn btn-block" type="button" onclick="batalPesanan('<?php echo $kd_transaksi ?>');" style="background-color: red; color: white;">Batalkan Pesanan</button>
                 </div>
+            <?php } ?>
             </div>
             <br>
         </div>
